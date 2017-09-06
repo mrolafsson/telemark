@@ -105,7 +105,7 @@ var StirUp = function(namespace, exports) {
         name = safe_name(name);
         // Supporting namespace prefixes if appropriate
         name = name.split(':');
-        exports[name[0]] = {};
+        exports[name[0]] = exports[name[0]] ? exports[name[0]] : {};
         name.length == 1 ? exports[name[0]] = func : exports[name[0]][name[1]] = func;
     }
 

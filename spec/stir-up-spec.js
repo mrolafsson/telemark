@@ -27,8 +27,9 @@ describe("basic functions for constructing markup", function() {
     });
 
     it("should support namespace prefixes", function() {
-        StirUp(['movie:science-fiction'], window);
+        StirUp(['movie:science-fiction', 'movie:director'], window);
         expect(movie.science_fiction).toBeDefined();
+        expect(movie.director).toBeDefined();
 
         expect(movie.science_fiction().make()).toBe("<movie:science-fiction></movie:science-fiction>");
     });
