@@ -5,6 +5,13 @@
 
 Download or install with: `npm install stir-up`.
 
+To keep things as compact as possible you can use the library with or without the built-in support for HTML.
+
+```html
+<script src="/stir-up.min.js"></script>
+<script src="/stir-up-html-plugin.min.js"></script><!-- Optional -->
+```
+
 Getting started is super simple, let's say you want to create HTML you start with the `StirUp.Html()` one:
 
 ```javascript
@@ -143,27 +150,19 @@ movie.science_fiction().make();
 <movie:science-fiction></movie:science-fiction>
 ```
 
-We try and deal with special characters in element/attribute names e.g. replacing `-` with `_`:
+>We try and deal with special characters in element/attribute names e.g. replacing `-` with `_`:
 
-```javascript
-StirUp(['sugar-free'], window);
-
-sugar_free().make();
-```
-
-...will return:
-
-```xml
-<sugar-free></sugar-free>
-```
-
-Or, you can use your own object to keep the global namespace nice and tidy:
+You can use your own holder to keep the global namespace nice and tidy:
 
 ```javascript
 var _ = StirUp(['foo', 'bar']);
+_.foo(
+    _.bar('One'),
+    _.bar('Two')
+).make();
 ```
 
-If you want to also specify helpers for attributes you can do that:
+If you also want to specify helpers for attributes you can do that:
 
 ```javascript
 var namespace = {
@@ -187,7 +186,7 @@ Output:
 </animals>
 ```
 
-You can also add any element, regardless of what helper methods you specified using the `el()` function:
+You can add any element, regardless of what helper methods you specified using the `el()` function:
 
 ```javascript
 StirUp([], window);
