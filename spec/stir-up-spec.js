@@ -18,6 +18,20 @@ describe("basic functions for constructing markup", function() {
 		
 		expect(_el().make()).toBe("<el></el>");
 	});
+
+    it("should deal with special characters in element names and attributes", function() {
+        StirUp(['stir-up'], window);
+        expect(stir_up).toBeDefined();
+
+        expect(stir_up().make()).toBe("<stir-up></stir-up>");
+    });
+
+    it("should support namespace prefixes", function() {
+        StirUp(['movie:science-fiction'], window);
+        expect(movie.science_fiction).toBeDefined();
+
+        expect(movie.science_fiction().make()).toBe("<movie:science-fiction></movie:science-fiction>");
+    });
 	
 	it("should work without or without specifying helper methods", function() {
 		StirUp(['foo'], window);

@@ -1,8 +1,8 @@
 var StirUp = function(namespace, exports) {
-	
+
 	// Determining whether to add the markup methods to an existing object (like window) and/or returned.
 	exports = (typeof exports === 'undefined') ? {} : exports;
-	
+
 	// Helper method to iterate collections and generate markup for each item.
 	exports.iterate = function (c, callback) {
 		return {
@@ -10,14 +10,14 @@ var StirUp = function(namespace, exports) {
 			_iterate : callback
 		}
 	};
-	
+
 	exports.when = function (expr) {
 		return {
 			_show: expr,
 			recipe: expr ? Array.prototype.slice.call(arguments, 1) : []
 		}
 	};
-	
+
 	// Create an element attribute.
 	exports.attr = function(name, value) {
 		return {
@@ -30,7 +30,7 @@ var StirUp = function(namespace, exports) {
 			}
 		};
 	};
-	
+
 	// Create an element with a particular name. Helper methods will then be created based on the namespace/attributes.
 	exports.el = function(name) {
 		var self = this;
@@ -91,15 +91,31 @@ var StirUp = function(namespace, exports) {
 	var attrs = (namespace.constructor === Array ? [] : namespace.attributes);
 
 	// Generating helper methods for all the tag/element names specified by the namespace object.
+    var self = this;
 	for (var e = 0; e < elements.length; e++) {
-		exports[(((exports.hasOwnProperty(elements[e]) || reserved.indexOf(elements[e]) > -1) && !exports.hasOwnProperty('_' + elements[e])) ? '_' + elements[e] : elements[e])] = new Function('return this.el(\'' + elements[e] + '\', arguments);');
-	}
-	
-	// Generating helper methods for any attributes if specified.
-	for (var a = 0; a < attrs.length; a++) {
-		exports[(((exports.hasOwnProperty(attrs[a]) || reserved.indexOf(attrs[a]) > -1)  && !exports.hasOwnProperty('_' + attrs[a])) ? '_' + attrs[a] : attrs[a])] = new Function('value', 'return this.attr(\'' + attrs[a] + '\', value);');
+		register(elements[e], new Function('return self.el(\'' + elements[e] + '\', arguments);'));
 	}
 
+	// Generating helper methods for any attributes if specified.
+	for (var a = 0; a < attrs.length; a++) {
+        register(attrs[a], new Function('value', 'return self.attr(\'' + attrs[a] + '\', value);'));
+	}
+
+	function register(name, func) {
+        name = safe_name(name);
+        // Supporting namespace prefixes if appropriate
+        name = name.split(':');
+        exports[name[0]] = {};
+        name.length == 1 ? exports[name[0]] = func : exports[name[0]][name[1]] = func;
+    }
+
+	function safe_name(name) {
+	    // Try and replace non allowed characters
+        // TODO This should probably throw some errors?
+        name = name.replace(/-/, '_');
+	    return (((exports.hasOwnProperty(name) || reserved.indexOf(name) > -1)  && !exports.hasOwnProperty('_' + name)) ? '_' + name : name);
+    }
+
 	return exports;
-	
+
 };

@@ -129,6 +129,34 @@ var my_foo = foo(
 </foo>
 ```
 
+Namespace prefixes are supported but the `:` needs to be replaced with an object dot notation to be a valid identifier:
+
+```javascript
+StirUp(['movie:science-fiction'], window);
+
+movie.science_fiction().make();
+```
+
+...will return:
+
+```xml
+<movie:science-fiction></movie:science-fiction>
+```
+
+We try and deal with special characters in element/attribute names e.g. replacing `-` with `_`:
+
+```javascript
+StirUp(['sugar-free'], window);
+
+sugar_free().make();
+```
+
+...will return:
+
+```xml
+<sugar-free></sugar-free>
+```
+
 Or, you can use your own object to keep the global namespace nice and tidy:
 
 ```javascript
