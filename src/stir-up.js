@@ -1,12 +1,39 @@
+/**
+ * Stir-up
+ *
+ * @author H. Stefan Olafsson <mr.olafsson@gmail.com> (https://twitter.com/mrolafsson/)
+ *
+ * @description Library for generating HTML (well any sort of markup) with JavaScript.
+ *
+ * @param {Object} namespace A list of the elements and attributes for which helper methods should be created.
+ * @param exports The object where the methods for generating markup should be registered.
+ *
+ * @constructor
+ */
 var StirUp = function (namespace, exports) {
 
     // Determining whether to add the markup methods to an existing object (like window) and/or returned.
     exports = (typeof exports === 'undefined') ? {} : exports;
 
-    // Helper method to iterate collections and generate markup for each item.
+    /**
+     * @name iterate
+     * @description Iterate elements in a collection and pass to a callback function that renders elements.
+     * @public
+     *
+     * @param {Object[]} c Collection of items to iterate.
+     * @param {iterateCallback} callback Elements or attributes to be added if {@link expr} evaluates to true.
+     *
+     */
     exports.iterate = function (c, callback) {
         return {
             collection: c,
+
+            /**
+             * A function that handles each member of a collection.
+             *
+             * @callback iterateCallback
+             * @param {Object} Item from collection.
+             */
             _iterate: callback,
             make: function () {
                 if (c != null) {
@@ -26,6 +53,17 @@ var StirUp = function (namespace, exports) {
         }
     };
 
+
+
+    /**
+     * @name when
+     * @description Conditionally add elements or attributes.
+     * @public
+     *
+     * @param {boolean} expr Expression to determine whether to add the nested elements.
+     * @param {...*} var_args Elements or attributes to be added if {@link expr} evaluates to true.
+     *
+     */
     exports.when = function (expr) {
         return {
             _show: expr,
@@ -42,7 +80,13 @@ var StirUp = function (namespace, exports) {
         }
     };
 
-    // Create an element attribute.
+    /**
+     * @name attr
+     * @description Create an element attribute with a given name and value.
+     *
+     * @param {string} name
+     * @param {Object} value
+     */
     exports.attr = function (name, value) {
         return {
             _make_attribute: function () {
@@ -55,6 +99,16 @@ var StirUp = function (namespace, exports) {
         };
     };
 
+    /**
+     * @name build
+     * @description Turns element and attribute objects into a markup array of strings.
+     * @function
+     * @private
+     *
+     * @param {stringp[]} attributes
+     * @param {string[]} markup
+     * @param {Object[]} recipe
+     */
     function build(attributes, markup, recipe) {
         for (var n = 0; n < recipe.length; n++) {
             if (recipe[n].hasOwnProperty('_make_attribute')) {
@@ -67,9 +121,18 @@ var StirUp = function (namespace, exports) {
                 markup.push(recipe[n].make());
             }
         }
-    };
+    }
 
     // Create an element with a particular name. Helper methods will then be created based on the namespace/attributes.
+    /**
+     * @name el
+     * @description Create an element with a particular name, attributes and child elements if they're passed as parameters.
+     * @public
+     *
+     * @param {string} name
+     * @param {...*} var_args Elements or attributes to be added to the body of this element.
+     *
+     */
     exports.el = function (name) {
         // var self = this;
         var attributes = [];
@@ -117,6 +180,15 @@ var StirUp = function (namespace, exports) {
         register(attrs[a], new Function('value', 'return self.attr(\'' + attrs[a] + '\', value);'));
     }
 
+    /**
+     * @name build
+     * @description Add the helper methods for specific elements and attributes to the context (e.g. window).
+     * @private
+     *
+     * @param {string} name The actual name of the element as it should appear in markup.
+     * @param {function} func The element function that uses {@link #el}.
+     *
+     */
     function register(name, func) {
         name = safe_name(name);
         // Supporting namespace prefixes if appropriate
@@ -125,6 +197,13 @@ var StirUp = function (namespace, exports) {
         name.length == 1 ? exports[name[0]] = func : exports[name[0]][name[1]] = func;
     }
 
+    /**
+     * Creates a JS valid identifier for the element or attribute helper method.
+     * @private
+     *
+     * @param {string} name The name of the element being registered to the namespace.
+     * @returns {string} a valid JS identifier.
+     */
     function safe_name(name) {
         // Try and replace non allowed characters
         // TODO This should probably throw some errors?
