@@ -26,7 +26,7 @@ module.exports = function(grunt) {
 		},
 		jasmine: {
 			pivotal: {
-				src: ['src/stir-up.js', 'src/stir-up-html-plugin.js'],
+				src: ['src/stir-up.js', 'src/stir-up-html-plugin.js', 'src/stir-up-jsdoc-plugin.js'],
 				options: {
 					specs: 'spec/*-spec.js',
 					helpers: 'spec/*-helper.js'

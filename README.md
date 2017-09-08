@@ -221,3 +221,36 @@ el('foo',
 	</bar>
 </foo>
 ```
+
+## Bonus Points: Generating JsDoc to suppress IDE warnings
+
+You can use `StirUp.JsDoc` plugin to generate JsDoc snippets to suppress any warnings the IDE may give you for the helper methods:
+
+```
+var funcs = new StirUp.JsDoc();
+
+var namespace = {
+    elements: ['animals:domestic', 'cat', 'dog'],
+    attributes: ['sound', 'leash']
+};
+StirUp(namespace, funcs);
+
+console.log(funcs.create_jsdoc());
+
+```
+
+Then copy/paste the snippets into your JS codebase:
+
+```
+/**@name iterate*/
+/**@name when*/
+/**@name attr*/
+/**@name el*/
+/**@name animals*/
+/**@namespace animals*/
+/**@name domestic*/
+/**@name cat*/
+/**@name dog*/
+/**@name sound*/
+/**@name leash*/
+```
