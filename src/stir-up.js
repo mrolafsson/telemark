@@ -192,9 +192,9 @@ var StirUp = function (namespace, exports) {
     function register(name, func) {
         name = safe_name(name);
         // Supporting namespace prefixes if appropriate
-        name = name.split(':');
-        exports[name[0]] = exports[name[0]] ? exports[name[0]] : {};
-        name.length == 1 ? exports[name[0]] = func : exports[name[0]][name[1]] = func;
+        var pair = name.split(':');
+        exports[pair[0]] = exports[pair[0]] ? exports[pair[0]] : {};
+        pair.length == 1 ? exports[pair[0]] = func : exports[pair[0]][pair[1]] = func;
     }
 
     /**

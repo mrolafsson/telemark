@@ -1,6 +1,5 @@
 describe("functions for constructing HTML", function() {
 	it("should construct markup", function() {
-		StirUp.Html(window);
 		expect(el('whatever').make()).toBe("<whatever></whatever>");
 		expect(div().make()).toBe("<div></div>");
 		expect(audio().make()).toBe("<audio></audio>");
@@ -9,11 +8,11 @@ describe("functions for constructing HTML", function() {
 	});
 	
 	it("should try and not step on it's own toes", function() {
-		expect(content).toBeDefined();
-		expect(_content).toBeDefined();
-		
-		expect(content().make()).toBe("<content></content>");
-		expect(_content("foo")._make_attribute()).toBe("content=\"foo\"");
+		expect(label).toBeDefined();
+		expect(_label).toBeDefined();
+
+		expect(label().make()).toBe("<label></label>");
+		expect(_label("foo")._make_attribute()).toBe("label=\"foo\"");
 	});
 	
 	it("should support nested elements", function() {
