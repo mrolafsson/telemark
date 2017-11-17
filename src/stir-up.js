@@ -11,6 +11,7 @@
  * @constructor
  */
 var StirUp = function (namespace, exports) {
+    "use strict";
 
     // Determining whether to add the markup methods to an existing object (like window) and/or returned.
     exports = (typeof exports === 'undefined') ? {} : exports;

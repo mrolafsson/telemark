@@ -1,8 +1,10 @@
 StirUp.JsDoc = function () {
+    "use strict";
 
 };
 
 StirUp.JsDoc.prototype.create_jsdoc = function () {
+    "use strict";
 
     function namespace(name) {
         return '\n/**@namespace ' + name + '*/';
