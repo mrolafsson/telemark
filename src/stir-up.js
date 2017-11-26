@@ -135,7 +135,6 @@ var StirUp = function (namespace, exports) {
      *
      */
     exports.el = function (name) {
-        // var self = this;
         var attributes = [];
         var markup = [];
 
@@ -171,14 +170,13 @@ var StirUp = function (namespace, exports) {
     var attrs = (namespace.constructor === Array ? [] : namespace.attributes);
 
     // Generating helper methods for all the tag/element names specified by the namespace object.
-    var self = this;
     for (var e = 0; e < elements.length; e++) {
-        register(elements[e], new Function('return self.el(\'' + elements[e] + '\', arguments);'));
+        register(elements[e], new Function('return this.el(\'' + elements[e] + '\', arguments);'));
     }
 
     // Generating helper methods for any attributes if specified.
     for (var a = 0; a < attrs.length; a++) {
-        register(attrs[a], new Function('value', 'return self.attr(\'' + attrs[a] + '\', value);'));
+        register(attrs[a], new Function('value', 'return this.attr(\'' + attrs[a] + '\', value);'));
     }
 
     /**
@@ -195,7 +193,13 @@ var StirUp = function (namespace, exports) {
         // Supporting namespace prefixes if appropriate
         var pair = name.split(':');
         exports[pair[0]] = exports[pair[0]] ? exports[pair[0]] : {};
-        pair.length == 1 ? exports[pair[0]] = func : exports[pair[0]][pair[1]] = func;
+        if (pair.length == 2 ) {
+            exports[pair[0]][pair[1]] = func;
+            exports[pair[0]].el = exports.el;
+            exports[pair[0]].attr = exports.attr;
+        } else {
+            exports[pair[0]] = func
+        }
     }
 
     /**
@@ -215,3 +219,5 @@ var StirUp = function (namespace, exports) {
     return exports;
 
 };
+
+module.exports = StirUp
