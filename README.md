@@ -103,7 +103,7 @@ This applies to both attributes and elements as this example shows:
 </ul>
 ```
 
-In this case, principal Rooney is not added to the list, and 
+In this case, principal Rooney is not added to the list, and only Cameron is draggable.
 
 ### Building in stages
 
