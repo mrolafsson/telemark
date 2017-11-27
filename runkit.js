@@ -1,9 +1,20 @@
 var markup = require("stir-up/dist/stir-up-html.min.js");
 markup.html.init(global);
 
-var marx_brothers = ['Groucho', 'Harpo', 'Chico', 'Gummo', 'Zeppo'];
+var brothers = ['Groucho', 'Harpo', 'Chico'];
+
 ol(
-    iterate(marx_brothers, function (bro) {
-        return li(bro);
-    })
+    iterate( brothers, function (name) {
+        return  li(
+                    a( href('https://en.wikipedia.org/wiki/' + name + '_Marx'),
+                        name
+                    )
+                );
+    }),
+    li( _class('other'),
+        'Gummo'
+    ),
+    li( _class('other'),
+        'Zeppo'
+    )
 ).make();

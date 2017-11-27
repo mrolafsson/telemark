@@ -21,6 +21,10 @@ describe("basic functions for constructing markup", function () {
         expect(_el().make()).toBe("<el></el>");
     });
 
+    it("should support wrapping text for body of elements with text() to make the code more readable", function () {
+        expect(foo( text('bar') ).make()).toBe("<foo>bar</foo>");
+    });
+
     it("should deal with special characters in element names and attributes", function () {
         StirUp(['stir-up'], window);
         expect(stir_up).toBeDefined();

@@ -5,13 +5,11 @@
  *
  * @description Library for generating HTML (well any sort of markup) with JavaScript.
  *
- */
-
-/**
- *
  * @param {Object} namespace A list of the elements and attributes for which helper methods should be created.
  * @param exports The object where the methods for generating markup should be registered.
+ *
  * @constructor
+ *
  */
 var StirUp = function (namespace, exports) {
     "use strict";
@@ -81,6 +79,16 @@ var StirUp = function (namespace, exports) {
                 }
             }
         }
+    };
+
+    /**
+     * Does nothing but return the string for readability of element body.
+     *
+     * @param text
+     * @returns {*}
+     */
+    exports.text = function (text) {
+        return text;
     };
 
     /**
