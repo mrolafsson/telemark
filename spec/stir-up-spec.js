@@ -1,5 +1,7 @@
 describe("basic functions for constructing markup", function () {
 
+    var module = {};
+
     it("should work without adding it's methods to the global namespace", function () {
         var _ = StirUp(['foo', 'bar']);
         expect(window.foo).toBeUndefined();

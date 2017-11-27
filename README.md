@@ -1,6 +1,6 @@
 # Stir-Up
 
-##### Programmatic templating of HTML with JavaScript.
+##### Programmatic templating of HTML and other markup with JavaScript.
 
 ## Getting started
 
@@ -24,7 +24,7 @@ or get both in one call:
 Getting started is super simple, let's say you want to create HTML you start with the `StirUp.Html()` one:
 
 ```javascript
-Html.define(window);
+Html.init(window);
 
 ol( _class('beautiful'),
 	li('Foo'),
@@ -43,9 +43,9 @@ This initialiser will add all the helper methods like `ol()`, and `li()` in this
 
 Note, you can also use `require()` where the equivalent would be:
 
-```js
+```javascript
 var markup = require("stir-up/dist/stir-up-html.min.js");
-markup.html.in(window);
+markup.html.init(window);
 ```
 
 > The library will do it's best to manage any conflicts in the namespace. If a particular element is a reserved word, or an attribute has same name as an element already defined the library will prefix with an underscore, e.g. the `_class()` attribute.
@@ -55,7 +55,7 @@ markup.html.in(window);
 Did I hear you say loop? Well, golly gosh what a coincidence. This is how you'd generate markup using the built-in `iterate()` method:
 
 ```javascript
-Html.define(window);
+Html.init(window);
 
 var marx_brothers = ['Groucho', 'Harpo', 'Chico', 'Gummo', 'Zeppo'];
 
@@ -136,10 +136,10 @@ brothers.make();
 In this case you don't start with `StirUp.Html()` but the core object `StirUp()`. You can pass in your own array of element names which will be turned into helper methods. You can either have these added to the global namespace like this:
 
 ```javascript
-StirUp.define(['foo', 'bar'], window);
+StirUp.init(['foo', 'bar'], window);
 
 // var markup = require('stir-up);
-// markup.define(['foo', 'bar'], window);
+// markup.init(['foo', 'bar'], window);
 
 var my_foo = foo(
 	bar('One'), 
@@ -159,7 +159,7 @@ var my_foo = foo(
 Namespace prefixes are supported but the `:` needs to be replaced with an object dot notation to be a valid identifier:
 
 ```javascript
-StirUp.define(['movie:science-fiction'], window);
+StirUp.init(['movie:science-fiction'], window);
 
 movie.science_fiction().make();
 ```
@@ -175,11 +175,17 @@ movie.science_fiction().make();
 You can use your own holder to keep the global namespace nice and tidy:
 
 ```javascript
-var _ = StirUp.define(['foo', 'bar']);
+var _ = StirUp.init(['foo', 'bar']);
 _.foo(
     _.bar('One'),
     _.bar('Two')
 ).make();
+```
+
+For HTML plugin you would use the same methodology:
+
+```javascript
+var _ = Html.init();
 ```
 
 If you also want to specify helpers for attributes you can do that:
@@ -189,7 +195,7 @@ var namespace = {
 	elements: ['animals', 'cat', 'dog'],
 	attributes: ['sound', 'leash']
 };
-StirUp.define(namespace, window);
+StirUp.init(namespace, window);
 
 animals(
 	dog( sound('woof'), 'Benji' ),
@@ -209,7 +215,7 @@ Output:
 You can add any element, regardless of what helper methods you specified using the `el()` function:
 
 ```javascript
-StirUp.define([], window);
+StirUp.init([], window);
 
 el('foo', 
 	el('bar', attr('name', 'thirst'), 
@@ -253,7 +259,7 @@ var namespace = {
     elements: ['animals:domestic', 'cat', 'dog'],
     attributes: ['sound', 'leash']
 };
-StirUp.define(namespace, funcs);
+StirUp.init(namespace, funcs);
 
 console.log(funcs.create_jsdoc());
 

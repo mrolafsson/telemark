@@ -1,6 +1,6 @@
 describe("functions for constructing HTML", function() {
 
-	Html.in(window);
+	Html.init(window);
 
 	it("should construct markup", function() {
 		expect(el('whatever').make()).toBe("<whatever></whatever>");

@@ -220,4 +220,4 @@ var StirUp = function (namespace, exports) {
     return exports;
 };
 
-module.exports.define = StirUp;
+module.exports.init = StirUp;

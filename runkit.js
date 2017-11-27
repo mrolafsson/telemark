@@ -1,5 +1,5 @@
 var markup = require("stir-up/dist/stir-up-html.min.js");
-markup.html.in(global);
+markup.html.init(global);
 
 var marx_brothers = ['Groucho', 'Harpo', 'Chico', 'Gummo', 'Zeppo'];
 ol(
