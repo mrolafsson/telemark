@@ -7,7 +7,7 @@ ol(
     iterate( brothers, function (name) {
         return  li(
                     a( href('https://en.wikipedia.org/wiki/' + name + '_Marx'),
-                        name
+                        text(name)
                     )
                 );
     }),
