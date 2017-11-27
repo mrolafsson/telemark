@@ -5,16 +5,19 @@
  *
  * @description Library for generating HTML (well any sort of markup) with JavaScript.
  *
+ */
+
+/**
+ *
  * @param {Object} namespace A list of the elements and attributes for which helper methods should be created.
  * @param exports The object where the methods for generating markup should be registered.
- *
  * @constructor
  */
 var StirUp = function (namespace, exports) {
     "use strict";
 
     // Determining whether to add the markup methods to an existing object (like window) and/or returned.
-    exports = (typeof exports === 'undefined') ? {} : exports;
+    var exports = (typeof exports === 'undefined') ? {} : exports;
 
     /**
      * @name iterate
@@ -43,7 +46,7 @@ var StirUp = function (namespace, exports) {
                         markup.push(
                             this._iterate(
                                 this.collection[z]
-                            )
+                            ).make()
                         );
                     }
                     return markup.join('');
@@ -53,7 +56,6 @@ var StirUp = function (namespace, exports) {
             }
         }
     };
-
 
 
     /**
@@ -142,7 +144,6 @@ var StirUp = function (namespace, exports) {
             if (Object.prototype.toString.call(arguments[i]) === '[object Arguments]') {
                 build(attributes, markup, arguments[i]);
             } else {
-                // console.log(JSON.stringify(Array.prototype.slice.call(arguments, 1)))
                 build(attributes, markup, Array.prototype.slice.call(arguments, 1));
                 break;
             }
@@ -193,7 +194,7 @@ var StirUp = function (namespace, exports) {
         // Supporting namespace prefixes if appropriate
         var pair = name.split(':');
         exports[pair[0]] = exports[pair[0]] ? exports[pair[0]] : {};
-        if (pair.length == 2 ) {
+        if (pair.length == 2) {
             exports[pair[0]][pair[1]] = func;
             exports[pair[0]].el = exports.el;
             exports[pair[0]].attr = exports.attr;
@@ -217,7 +218,6 @@ var StirUp = function (namespace, exports) {
     }
 
     return exports;
-
 };
 
-module.exports = StirUp
+module.exports.define = StirUp;

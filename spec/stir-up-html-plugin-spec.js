@@ -1,4 +1,7 @@
 describe("functions for constructing HTML", function() {
+
+	Html.in(window);
+
 	it("should construct markup", function() {
 		expect(el('whatever').make()).toBe("<whatever></whatever>");
 		expect(div().make()).toBe("<div></div>");
@@ -38,7 +41,7 @@ describe("functions for constructing HTML", function() {
 		expect(
 			ol( _class('marx'),
 				iterate(marx_brothers, function (bro) {
-					return li( _class(bro), bro).make();
+					return li( _class(bro), bro);
 				})
 			).make()).toBe("<ol class=\"marx\"><li class=\"Groucho\">Groucho</li><li class=\"Harpo\">Harpo</li><li class=\"Chico\">Chico</li><li class=\"Gummo\">Gummo</li><li class=\"Zeppo\">Zeppo</li></ol>");
 	});

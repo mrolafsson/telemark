@@ -24,6 +24,17 @@ module.exports = function(grunt) {
 				}]
 			}
 		},
+        concat: {
+            options: {
+                separator: ';',
+            },
+            dist: {
+                files: {
+                    'dist/stir-up-html.min.js': ['dist/stir-up.min.js', 'dist/stir-up-html-plugin.min.js'],
+                    'dist/stir-up-angular.min.js': ['dist/stir-up.min.js', 'dist/stir-up-angular-plugin.min.js'],
+                }
+            },
+        },
 		jasmine: {
 			pivotal: {
 				src: ['src/stir-up.js', 'src/stir-up-html-plugin.js', 'src/stir-up-angular-plugin.js', 'src/stir-up-jsdoc-plugin.js'],
@@ -35,10 +46,11 @@ module.exports = function(grunt) {
 		},
 	});
 
+    grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify')
 	grunt.loadNpmTasks('grunt-contrib-jasmine');
 
 	// Default task(s).
-	grunt.registerTask('default', ['jasmine', 'uglify']);
+	grunt.registerTask('default', ['jasmine', 'uglify', 'concat']);
 
 };

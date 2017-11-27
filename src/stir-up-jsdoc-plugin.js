@@ -1,9 +1,9 @@
-StirUp.JsDoc = function () {
+var JsDoc = function () {
     "use strict";
 
 };
 
-StirUp.JsDoc.prototype.create_jsdoc = function () {
+JsDoc.prototype.create_jsdoc = function () {
     "use strict";
 
     function namespace(name) {

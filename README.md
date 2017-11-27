@@ -15,10 +15,16 @@ To keep things as compact as possible you can use the library with or without th
 <script src="/stir-up-html-plugin.min.js"></script><!-- Optional -->
 ```
 
+or get both in one call:
+
+```html
+<script src="/stir-up-html.min.js"></script>
+```
+
 Getting started is super simple, let's say you want to create HTML you start with the `StirUp.Html()` one:
 
 ```javascript
-StirUp.Html(window);
+Html.define(window);
 
 ol( _class('beautiful'),
 	li('Foo'),
@@ -35,6 +41,13 @@ This initialiser will add all the helper methods like `ol()`, and `li()` in this
 </ol>
 ```
 
+Note, you can also use `require()` where the equivalent would be:
+
+```js
+var markup = require("stir-up/dist/stir-up-html.min.js");
+markup.html.in(window);
+```
+
 > The library will do it's best to manage any conflicts in the namespace. If a particular element is a reserved word, or an attribute has same name as an element already defined the library will prefix with an underscore, e.g. the `_class()` attribute.
 
 ### Iteration
@@ -42,12 +55,13 @@ This initialiser will add all the helper methods like `ol()`, and `li()` in this
 Did I hear you say loop? Well, golly gosh what a coincidence. This is how you'd generate markup using the built-in `iterate()` method:
 
 ```javascript
-StirUp.Html(window);
+Html.define(window);
+
 var marx_brothers = ['Groucho', 'Harpo', 'Chico', 'Gummo', 'Zeppo'];
 
 ol( _class('marx'),
 	iterate(marx_brothers, function (bro) {
-		return li( _class(bro), bro ).make();
+		return li( _class(bro), bro );
 	})
 ).make()
 ```
@@ -122,7 +136,10 @@ brothers.make();
 In this case you don't start with `StirUp.Html()` but the core object `StirUp()`. You can pass in your own array of element names which will be turned into helper methods. You can either have these added to the global namespace like this:
 
 ```javascript
-StirUp(['foo', 'bar'], window);
+StirUp.define(['foo', 'bar'], window);
+
+// var markup = require('stir-up);
+// markup.define(['foo', 'bar'], window);
 
 var my_foo = foo(
 	bar('One'), 
@@ -142,7 +159,7 @@ var my_foo = foo(
 Namespace prefixes are supported but the `:` needs to be replaced with an object dot notation to be a valid identifier:
 
 ```javascript
-StirUp(['movie:science-fiction'], window);
+StirUp.define(['movie:science-fiction'], window);
 
 movie.science_fiction().make();
 ```
@@ -158,7 +175,7 @@ movie.science_fiction().make();
 You can use your own holder to keep the global namespace nice and tidy:
 
 ```javascript
-var _ = StirUp(['foo', 'bar']);
+var _ = StirUp.define(['foo', 'bar']);
 _.foo(
     _.bar('One'),
     _.bar('Two')
@@ -172,7 +189,7 @@ var namespace = {
 	elements: ['animals', 'cat', 'dog'],
 	attributes: ['sound', 'leash']
 };
-StirUp(namespace, window);
+StirUp.define(namespace, window);
 
 animals(
 	dog( sound('woof'), 'Benji' ),
@@ -192,7 +209,7 @@ Output:
 You can add any element, regardless of what helper methods you specified using the `el()` function:
 
 ```javascript
-StirUp([], window);
+StirUp.define([], window);
 
 el('foo', 
 	el('bar', attr('name', 'thirst'), 
@@ -230,13 +247,13 @@ el('foo',
 You can use `StirUp.JsDoc` plugin to generate JsDoc snippets to suppress any warnings the IDE may give you for the helper methods:
 
 ```
-var funcs = new StirUp.JsDoc();
+var funcs = new JsDoc();
 
 var namespace = {
     elements: ['animals:domestic', 'cat', 'dog'],
     attributes: ['sound', 'leash']
 };
-StirUp(namespace, funcs);
+StirUp.define(namespace, funcs);
 
 console.log(funcs.create_jsdoc());
 

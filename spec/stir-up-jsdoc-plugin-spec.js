@@ -1,7 +1,7 @@
 describe("functions for constructing JsDoc documentation for suppressing editor warnings", function() {
 	it("should construct jsdoc", function() {
 
-		var funcs = new StirUp.JsDoc();
+		var funcs = new JsDoc();
 
         var namespace = {
             elements: ['animals:domestic', 'cat', 'dog'],

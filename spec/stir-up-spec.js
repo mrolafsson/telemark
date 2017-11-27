@@ -60,7 +60,7 @@ describe("basic functions for constructing markup", function () {
         expect(
             foo(
                 iterate(list, function (e) {
-                    return bar(e).make();
+                    return bar(e);
                 })
             ).make()
         ).toBe("<foo><bar>Ding</bar><bar>Dong</bar></foo>")
@@ -68,7 +68,7 @@ describe("basic functions for constructing markup", function () {
         expect(
             foo(
                 iterate([], function (e) {
-                    return bar(e).make();
+                    return bar(e);
                 })
             ).make()
         ).toBe("<foo></foo>");
@@ -76,7 +76,7 @@ describe("basic functions for constructing markup", function () {
         expect(
             foo(
                 iterate(undefined, function (e) {
-                    return bar(e).make();
+                    return bar(e);
                 })
             ).make()
         ).toBe("<foo></foo>");
@@ -84,7 +84,7 @@ describe("basic functions for constructing markup", function () {
         expect(
             foo(
                 iterate(null, function (e) {
-                    return bar(e).make();
+                    return bar(e);
                 })
             ).make()
         ).toBe("<foo></foo>");
@@ -195,17 +195,17 @@ describe("basic functions for constructing markup", function () {
 
         var list = ['Ding', 'Dong'];
         expect(iterate(list, function (e) {
-                return bar(attr('foo', 'bar'), bar(e)).make();
+                return bar(attr('foo', 'bar'), bar(e));
             }).make()
         ).toBe("<bar foo=\"bar\"><bar>Ding</bar></bar><bar foo=\"bar\"><bar>Dong</bar></bar>");
 
         expect(iterate([], function (e) {
-                return bar(e).make();
+                return bar(e);
             }).make()
         ).toBe("");
 
         expect(iterate(undefined, function (e) {
-                return bar(e).make();
+                return bar(e);
             }).make()
         ).toBe("");
     });
