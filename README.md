@@ -3,7 +3,7 @@
 
 # Stir-Up
 
-##### Programmatic templating of HTML and other markup with JavaScript.
+##### Programmatic, super-lightweight templating of HTML and other markup with plain JavaScript.
 
 ## Getting started
 
@@ -12,14 +12,14 @@ Download or install with: `npm install stir-up`.
 To keep things as compact as possible you can use the library with or without the built-in support for HTML.
 
 ```html
-<script src="/stir-up.min.js"></script>
+<script src="/stir-up.min.js"></script><!-- Wow only 2K -->
 <script src="/stir-up-html-plugin.min.js"></script><!-- Optional -->
 ```
 
 or get both in one call:
 
 ```html
-<script src="/stir-up-html.min.js"></script>
+<script src="/stir-up-html.min.js"></script><!-- Gosh only 4K -->
 ```
 
 Getting started is super simple, let's say you want to create HTML you start with the `StirUp.Html()` one:
