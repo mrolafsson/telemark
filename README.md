@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mrolafsson/stir-up.svg?branch=master)](https://travis-ci.org/mrolafsson/stir-up)
+
 # Stir-Up
 
 ##### Programmatic templating of HTML and other markup with JavaScript.
