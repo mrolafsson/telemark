@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/mrolafsson/stir-up.svg?branch=master)](https://travis-ci.org/mrolafsson/stir-up)
+[![Try stir-up on RunKit](https://badge.runkitcdn.com/stir-up.svg)](https://npm.runkit.com/stir-up)
 
 # Stir-Up
 
@@ -7,8 +8,6 @@
 ## Getting started
 
 Download or install with: `npm install stir-up`.
-
-[![Try stir-up on RunKit](https://badge.runkitcdn.com/stir-up.svg)](https://npm.runkit.com/stir-up)
 
 To keep things as compact as possible you can use the library with or without the built-in support for HTML.
 
