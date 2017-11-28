@@ -1,5 +1,5 @@
 var markup = require("stir-up/dist/stir-up-html.min.js");
-markup.html.init(global);
+markup.html.init(this);
 
 var brothers = ['Groucho', 'Harpo', 'Chico'];
 
