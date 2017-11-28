@@ -216,11 +216,4 @@ describe("basic functions for constructing markup", function () {
         ).toBe("");
     });
 
-    it("should support defining reusable components", function () {
-        StirUp.specify('telephone', function (name, number) {
-            return a( href('tel:' + number), _class('phone-number'), text(name) );
-        });
-        expect(span( telephone( 'Ghostbusters', '+1-800-555-2368' ) ).make()).toBe("<span><a href=\"tel:+1-800-555-2368\" class=\"phone-number\">Ghostbusters</a></span>");
-    });
-
 });
