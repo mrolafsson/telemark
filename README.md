@@ -3,7 +3,8 @@
 
 # Stir-Up
 
-##### Programmatic, super-lightweight templating of HTML and other markup with plain JavaScript.
+##### Super-lightweight templating and generation of HTML (and other markup) with plain JavaScript. Works in the browser and Node.js.
+
 
 ## Getting started
 
@@ -105,6 +106,38 @@ This applies to both attributes and elements as this example shows:
 
 In this case, principal Rooney is not added to the list, and only Cameron is draggable.
 
+
+## Reusable components
+
+You can specify and register your own components that encapsulate logic and return a particular structure:
+
+```javascript
+StirUp.specify('telephone', function (name, number) {
+    return a( href('tel:' + number), _class('phone-number'), text(name) );
+});
+```
+
+You can then use these like any other element except that you pass in the parameters you specified:
+
+```javascript
+ol(
+    li(
+        telephone( 'Ghostbusters', '+1-800-555-2368' )
+    )
+)
+```
+
+This would add your component with the specified properties, resulting in this case in the following HTML:
+
+```html
+<ol>
+    <li>
+        <a href="tel:+1-800-555-2368" class="phone-number">Ghostbusters</a>
+    </li>
+</ol>
+```
+
+
 ### Building in stages
 
 You don't have to create the markup using one fluent sequence. You can do this in stages and work with the elements at each stage, `append`/`prepend` elements, `set` attributes etc.
@@ -131,7 +164,8 @@ brothers.make();
 	<li>Chico</li>
 </ol>
 ```
-
+ 
+ 
 ## Generating markup using your own element specification
 
 In this case you don't start with `StirUp.Html()` but the core object `StirUp()`. You can pass in your own array of element names which will be turned into helper methods. You can either have these added to the global namespace like this:

@@ -3,18 +3,18 @@ describe("basic functions for constructing markup", function () {
     var module = {};
 
     it("should work without adding it's methods to the global namespace", function () {
-        var _ = StirUp(['foo', 'bar']);
+        var _ = StirUp.init(['foo', 'bar']);
         expect(window.foo).toBeUndefined();
         expect(_.foo).toBeDefined();
     });
 
     it("should be able to add markup functions to window object for a nice, neat syntax", function () {
-        StirUp(['foo', 'bar'], window);
+        StirUp.init(['foo', 'bar'], window);
         expect(window.foo).toBeDefined();
     });
 
     it("should try and not step on it's own toes", function () {
-        StirUp(['el'], window);
+        StirUp.init(['el'], window);
         expect(el).toBeDefined();
         expect(_el).toBeDefined();
 
@@ -26,14 +26,14 @@ describe("basic functions for constructing markup", function () {
     });
 
     it("should deal with special characters in element names and attributes", function () {
-        StirUp(['stir-up'], window);
+        StirUp.init(['stir-up'], window);
         expect(stir_up).toBeDefined();
 
         expect(stir_up().make()).toBe("<stir-up></stir-up>");
     });
 
     it("should support namespace prefixes", function () {
-        StirUp(['movie:science-fiction', 'movie:director'], window);
+        StirUp.init(['movie:science-fiction', 'movie:director'], window);
         expect(movie.science_fiction).toBeDefined();
         expect(movie.director).toBeDefined();
 
@@ -41,7 +41,7 @@ describe("basic functions for constructing markup", function () {
     });
 
     it("should work without or without specifying helper methods", function () {
-        StirUp(['foo'], window);
+        StirUp.init(['foo'], window);
         expect(
             el('foo',
                 el('bar', attr('name', 'thirst'), 'First'),
@@ -101,7 +101,7 @@ describe("basic functions for constructing markup", function () {
             elements: ['animals', 'cat', 'dog'],
             attributes: ['sound', 'leash']
         };
-        StirUp(namespace, window);
+        StirUp.init(namespace, window);
 
         var my_animals = animals();
 
@@ -214,6 +214,13 @@ describe("basic functions for constructing markup", function () {
                 return bar(e);
             }).make()
         ).toBe("");
+    });
+
+    it("should support defining reusable components", function () {
+        StirUp.specify('telephone', function (name, number) {
+            return a( href('tel:' + number), _class('phone-number'), text(name) );
+        });
+        expect(span( telephone( 'Ghostbusters', '+1-800-555-2368' ) ).make()).toBe("<span><a href=\"tel:+1-800-555-2368\" class=\"phone-number\">Ghostbusters</a></span>");
     });
 
 });

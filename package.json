@@ -1,7 +1,7 @@
 {
 	"name": "stir-up",
 	"description": "Library for generating HTML (well any sort of markup) with JavaScript",
-	"version": "1.3.0",
+	"version": "1.4.0",
 	"main": "src/stir-up.js",
 	"repository": {
 		"type": "git",
