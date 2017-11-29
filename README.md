@@ -137,6 +137,37 @@ This would add your component with the specified properties, resulting in this c
 </ol>
 ```
 
+### Component nesting
+
+If you need components to be able to nest other components you can use the following pattern to define them:
+
+```javascript
+StirUp.specify('brothers', function (brothers, nested) {
+    return  section(
+                ol( _class('brothers'),
+                    iterate(brothers, function (brother) {
+                        return nested(brother);
+                    })
+                )
+            );
+});
+StirUp.specify('brother', function (brother) {
+    return  li( _class('brother'),
+                text(brother)
+            );
+});
+```
+
+You can then use them like this:
+
+```javascript
+var marx_brothers = ['Groucho', 'Harpo', 'Chico', 'Gummo', 'Zeppo'];
+
+brothers(marx_brothers, function (name) {
+        return brother(name);
+}).make()
+```
+
 
 ### Building in stages
 

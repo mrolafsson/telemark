@@ -12,7 +12,16 @@ var Angular = (function(StirUp) {
 		}
 	};
 })(StirUp || {});
-module.exports.angular = Angular;
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+    module.exports.angular = Angular;
+}
+
+if (typeof exports !== 'undefined') {
+    if (typeof module !== 'undefined' && module.exports) {
+        exports = module.exports.angular = Angular;
+    }
+    exports.angular = Angular;
+}
 /**@name iterate*/
 /**@name when*/
 /**@name attr*/

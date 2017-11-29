@@ -12,8 +12,12 @@ var Html = (function(StirUp) {
 		}
 	};
 })(StirUp || {});
-
-module.exports.html = Html;
+if (typeof exports !== 'undefined') {
+    if (typeof module !== 'undefined' && module.exports) {
+        exports = module.exports.html = Html;
+    }
+    exports.html = Html;
+}
 /**@name iterate*/
 /**@name when*/
 /**@name attr*/

@@ -256,4 +256,10 @@ var StirUp = (function () {
 
 })();
 
-module.exports = StirUp;
+if (typeof exports !== 'undefined') {
+    if (typeof module !== 'undefined' && module.exports) {
+        exports = module.exports = StirUp;
+    }
+    // But always support CommonJS module 1.1.1 spec (`exports` cannot be a function)
+    exports = StirUp;
+}

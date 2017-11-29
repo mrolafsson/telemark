@@ -76,7 +76,7 @@ describe("functions for constructing HTML", function() {
             return  section(
                         ol( _class('brothers'),
                             iterate(brothers, function (brother) {
-                                return nested(brother)
+                                return nested(brother);
                             })
                         )
                     );
