@@ -12,10 +12,10 @@ describe("functions for constructing HTML", function() {
 	
 	it("should try and not step on it's own toes", function() {
 		expect(label).toBeDefined();
-		expect(_label).toBeDefined();
+		expect($label).toBeDefined();
 
 		expect(label().make()).toBe("<label></label>");
-		expect(_label("foo")._make_attribute()).toBe("label=\"foo\"");
+		expect($label("foo")._make_attribute()).toBe("label=\"foo\"");
 	});
 	
 	it("should support nested elements", function() {
@@ -39,15 +39,15 @@ describe("functions for constructing HTML", function() {
 	it("should support iteration", function() {
 		var marx_brothers = ['Groucho', 'Harpo', 'Chico', 'Gummo', 'Zeppo'];
 		expect(
-			ol( _class('marx'),
+			ol( $class('marx'),
 				iterate(marx_brothers, function (bro) {
-					return li( _class(bro), bro);
+					return li( $class(bro), bro);
 				})
 			).make()).toBe("<ol class=\"marx\"><li class=\"Groucho\">Groucho</li><li class=\"Harpo\">Harpo</li><li class=\"Chico\">Chico</li><li class=\"Gummo\">Gummo</li><li class=\"Zeppo\">Zeppo</li></ol>");
 	});
 	
 	it("should support building html in stages", function() {
-		var brothers = ol( _class('marx') );
+		var brothers = ol( $class('marx') );
 	
 		var harpo = li('Harpo');
 		harpo.set( draggable(true) );
@@ -66,7 +66,7 @@ describe("functions for constructing HTML", function() {
 
     it("should support defining reusable components", function () {
         StirUp.specify('telephone', function (name, number) {
-            return a( href('tel:' + number), _class('phone-number'), text(name) );
+            return a( href('tel:' + number), $class('phone-number'), text(name) );
         });
         expect(span( telephone( 'Ghostbusters', '+1-800-555-2368' ) ).make()).toBe("<span><a href=\"tel:+1-800-555-2368\" class=\"phone-number\">Ghostbusters</a></span>");
     });
@@ -74,7 +74,7 @@ describe("functions for constructing HTML", function() {
     it("should be possible to nest reusable components", function () {
         StirUp.specify('brothers', function (brothers, nested) {
             return  section(
-                        ol( _class('brothers'),
+                        ol( $class('brothers'),
                             iterate(brothers, function (brother) {
                                 return nested(brother);
                             })
@@ -82,7 +82,7 @@ describe("functions for constructing HTML", function() {
                     );
         });
         StirUp.specify('brother', function (brother) {
-            return  li( _class('brother'),
+            return  li( $class('brother'),
                         text(brother)
                     );
         });

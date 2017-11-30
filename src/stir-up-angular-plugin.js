@@ -24,6 +24,7 @@ if (typeof exports !== 'undefined') {
 }
 /**@name iterate*/
 /**@name when*/
+/**@name text*/
 /**@name attr*/
 /**@name el*/
 /**@name ng_transclude*/
@@ -83,5 +84,5 @@ if (typeof exports !== 'undefined') {
 /**@name ng_style*/
 /**@name ng_submit*/
 /**@name ng_switch*/
-/**@name _ng_transclude*/
+/**@name $ng_transclude*/
 /**@name ng_value*/

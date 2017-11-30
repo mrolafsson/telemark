@@ -16,9 +16,9 @@ describe("basic functions for constructing markup", function () {
     it("should try and not step on it's own toes", function () {
         StirUp.init(['el'], window);
         expect(el).toBeDefined();
-        expect(_el).toBeDefined();
+        expect($el).toBeDefined();
 
-        expect(_el().make()).toBe("<el></el>");
+        expect($el().make()).toBe("<el></el>");
     });
 
     it("should support wrapping text for body of elements with text() to make the code more readable", function () {

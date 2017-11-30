@@ -54,7 +54,7 @@ var StirUp = (function () {
         // Try and replace non allowed characters
         // TODO This should probably throw some errors?
         name = name.replace(/-/, '_');
-        return (((_exports.hasOwnProperty(name) || reserved.indexOf(name) > -1) && !_exports.hasOwnProperty('_' + name)) ? '_' + name : name);
+        return (((_exports.hasOwnProperty(name) || reserved.indexOf(name) > -1) && !_exports.hasOwnProperty('$' + name)) ? '$' + name : name);
     }
     
     /**

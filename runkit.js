@@ -21,10 +21,10 @@ section(
                         brother(name)
                     );
         }),
-        li( _class('other'),
+        li( $class('other'),
             brother('Gummo')
         ),
-        li( _class('other'),
+        li( $class('other'),
             brother('Zeppo')
         )
     )

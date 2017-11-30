@@ -28,7 +28,7 @@ Getting started is super simple, let's say you want to create HTML you start wit
 ```javascript
 Html.init(window);
 
-ol( _class('beautiful'),
+ol( $class('beautiful'),
 	li('Foo'),
 	li('Bar')
 ).make();
@@ -50,7 +50,8 @@ var markup = require("stir-up/dist/stir-up-html.min.js");
 markup.html.init(window);
 ```
 
-> The library will do it's best to manage any conflicts in the namespace. If a particular element is a reserved word, or an attribute has same name as an element already defined the library will prefix with an underscore, e.g. the `_class()` attribute.
+> The library will do it's best to manage any conflicts in the namespace. If a particular element is a reserved word, or an attribute has same name as an element already defined the library will prefix with a dollar sign (`$`), e.g. the `$class()` attribute.
+
 
 ### Iteration
 
@@ -61,9 +62,9 @@ Html.init(window);
 
 var marx_brothers = ['Groucho', 'Harpo', 'Chico', 'Gummo', 'Zeppo'];
 
-ol( _class('marx'),
+ol( $class('marx'),
 	iterate(marx_brothers, function (bro) {
-		return li( _class(bro), bro );
+		return li( $class(bro), bro );
 	})
 ).make()
 ```
@@ -113,7 +114,7 @@ You can specify and register your own components that encapsulate logic and retu
 
 ```javascript
 StirUp.specify('telephone', function (name, number) {
-    return a( href('tel:' + number), _class('phone-number'), text(name) );
+    return a( href('tel:' + number), $class('phone-number'), text(name) );
 });
 ```
 
@@ -137,6 +138,7 @@ This would add your component with the specified properties, resulting in this c
 </ol>
 ```
 
+
 ### Component nesting
 
 If you need components to be able to nest other components you can use the following pattern to define them:
@@ -144,7 +146,7 @@ If you need components to be able to nest other components you can use the follo
 ```javascript
 StirUp.specify('brothers', function (brothers, nested) {
     return  section(
-                ol( _class('brothers'),
+                ol( $class('brothers'),
                     iterate(brothers, function (brother) {
                         return nested(brother);
                     })
@@ -152,7 +154,7 @@ StirUp.specify('brothers', function (brothers, nested) {
             );
 });
 StirUp.specify('brother', function (brother) {
-    return  li( _class('brother'),
+    return  li( $class('brother'),
                 text(brother)
             );
 });
@@ -174,7 +176,7 @@ brothers(marx_brothers, function (name) {
 You don't have to create the markup using one fluent sequence. You can do this in stages and work with the elements at each stage, `append`/`prepend` elements, `set` attributes etc.
 
 ```javascript
-var brothers = ol( _class('marx') );
+var brothers = ol( $class('marx') );
 
 var harpo = li('Harpo');
 harpo.set( draggable(true) );
