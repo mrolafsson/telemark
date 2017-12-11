@@ -101,15 +101,29 @@ var StirUp = (function () {
                  */
                 _iterate: callback,
                 make: function () {
-                    if (c != null) {
-                        var markup = []
-                        for (var z = 0; z < this.collection.length; z++) {
+                    if (c != null && typeof c == 'object') {
+                        var markup = [];
+
+                        if (Array.isArray(c)) {
+                          for (var z = 0; z < this.collection.length; z++) {
                             markup.push(
-                                this._iterate(
-                                    this.collection[z]
-                                ).make()
+                              this._iterate(
+                                this.collection[z]
+                              ).make()
                             );
+                          }
+                        } else {
+                            for (var prop in this.collection) {
+                                if (this.collection.hasOwnProperty(prop)) {
+                                  markup.push(
+                                    this._iterate(
+                                      this.collection[prop], prop
+                                    ).make()
+                                  );
+                                }
+                            }
                         }
+
                         return markup.join('');
                     } else {
                         return '';
