@@ -50,7 +50,7 @@ var markup = require("stir-up/dist/stir-up-html.min.js");
 markup.html.init(window);
 ```
 
-> The library will do it's best to manage any conflicts in the namespace. If a particular element is a reserved word, or an attribute has same name as an element already defined the library will prefix with a dollar sign (`$`), e.g. the `$class()` attribute.
+> Check out this [example](https://runkit.com/mrolafsson/stir-up-with-express-js) generating [HTML](https://stir-up-with-express-js-rtaxeaesdwgl.runkit.sh) server-side with [Express.js](http://expressjs.com)!
 
 
 ### Iteration
