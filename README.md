@@ -71,6 +71,27 @@ ol( $class('marx'),
 
 In this example you specify the sub-elements you need per entry using an anonymous function. This means that you have full control over the handling of each element in the collection.
 
+You can also do object iteration:
+
+```javascript
+var obj = { Perch: 'Embiotocidae', Pike: 'Ptychocheilus grandis', Yellowtail: 'Seriola dorsalis'};
+ol(
+    iterate(obj, function (value, key) {
+        return li( text(key), text(': '), i(value) );
+    })
+).make()
+```
+
+Note that the first argument passed to the function is the value, resulting in the following HTML in this case:
+
+```html
+<ol>
+    <li>Perch: <i>Embiotocidae</i></li>
+    <li>Pike: <i>Ptychocheilus grandis</i></li>
+    <li>Yellowtail: <i>Seriola dorsalis</i></li>
+</ol>
+```
+
 >You can pass into each function any number of elements, and attributes and the library will construct the right markup. Note that if you pass in a simple string it will be used for the body of the element.
 
 

@@ -95,19 +95,15 @@ describe("basic functions for constructing markup", function () {
             ).make()
         ).toBe("<foo></foo>");
 
-        var obj = {
-            foo: 'abc',
-            bar: 'def',
-            baz: 'ghi'
-        };
+        var obj = { Perch: 'Embiotocidae', Pike: 'Ptychocheilus grandis', Yellowtail: 'Seriola dorsalis'};
 
         expect(
-          foo(
-            iterate(obj, function (val, key) {
-                return bar(key + ': ' + val);
-            })
-          ).make()
-        ).toBe('<foo><bar>foo: abc</bar><bar>bar: def</bar><bar>baz: ghi</bar></foo>');
+            ol(
+                iterate(obj, function (value, key) {
+                    return li(text(key), text(': '), i(value));
+                })
+            ).make()
+        ).toBe('<ol><li>Perch: <i>Embiotocidae</i></li><li>Pike: <i>Ptychocheilus grandis</i></li><li>Yellowtail: <i>Seriola dorsalis</i></li></ol>');
     });
 
     it("should allow you to build markup in stages", function () {
