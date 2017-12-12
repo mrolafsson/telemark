@@ -50,7 +50,7 @@ var markup = require("telemark/dist/telemark-html.min.js");
 markup.html.init(window);
 ```
 
-> Check out this [example](https://runkit.com/mrolafsson/telemark-with-express-js) generating [HTML](https://telemark-with-express-js-rtaxeaesdwgl.runkit.sh) server-side with [Express.js](http://expressjs.com)!
+> Check out this [code example](https://runkit.com/mrolafsson/telemark-with-express-js) generating [HTML](https://telemark-with-express-js-0f6jnafj3umz.runkit.sh) server-side with [Express.js](http://expressjs.com)!
 
 
 ### Iteration
