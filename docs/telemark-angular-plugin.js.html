@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: telemark-angular-plugin.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: telemark-angular-plugin.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>var Angular = (function(Telemark) {
+    "use strict";
+
+    return {
+    	init: function (exports) {
+            var namespace = {
+                elements: ["ng-transclude"],
+                attributes: ["ng-app","ng-bind","ng-bind-html","ng-bind-template","ng-blur","ng-change","ng-checked","ng-class","ng-class-even","ng-class-odd","ng-click","ng-cloak","ng-controller","ng-copy","ng-csp","ng-cut","ng-dblclick","ng-disabled","ng-focus","ng-form","ng-hide","ng-href","ng-if","ng-include","ng-init","ng-jq","ng-keydown","ng-keypress","ng-keyup","ng-list","ng-maxlength","ng-minlength","ng-model","ng-model-options","ng-mousedown","ng-mouseenter","ng-mouseleave","ng-mousemove","ng-mouseover","ng-mouseup","ng-non-bindable","ng-open","ng-options","ng-paste","ng-pattern","ng-pluralize","ng-readonly","ng-repeat","ng-required","ng-selected","ng-show","ng-src","ng-srcset","ng-style","ng-submit","ng-switch","ng-transclude","ng-value"]
+            };
+
+            return Telemark.init(namespace, exports);
+		}
+	};
+})(Telemark || {});
+if (typeof exports !== "undefined") {
+    if (typeof module !== "undefined" &amp;&amp; module.exports) {
+        exports = module.exports.angular = Angular;
+    }
+    exports.angular = Angular;
+}
+/**@name iterate*/
+/**@name when*/
+/**@name text*/
+/**@name attr*/
+/**@name el*/
+/**@name ng_transclude*/
+/**@name ng_app*/
+/**@name ng_bind*/
+/**@name ng_bind-html*/
+/**@name ng_bind-template*/
+/**@name ng_blur*/
+/**@name ng_change*/
+/**@name ng_checked*/
+/**@name ng_class*/
+/**@name ng_class-even*/
+/**@name ng_class-odd*/
+/**@name ng_click*/
+/**@name ng_cloak*/
+/**@name ng_controller*/
+/**@name ng_copy*/
+/**@name ng_csp*/
+/**@name ng_cut*/
+/**@name ng_dblclick*/
+/**@name ng_disabled*/
+/**@name ng_focus*/
+/**@name ng_form*/
+/**@name ng_hide*/
+/**@name ng_href*/
+/**@name ng_if*/
+/**@name ng_include*/
+/**@name ng_init*/
+/**@name ng_jq*/
+/**@name ng_keydown*/
+/**@name ng_keypress*/
+/**@name ng_keyup*/
+/**@name ng_list*/
+/**@name ng_maxlength*/
+/**@name ng_minlength*/
+/**@name ng_model*/
+/**@name ng_model-options*/
+/**@name ng_mousedown*/
+/**@name ng_mouseenter*/
+/**@name ng_mouseleave*/
+/**@name ng_mousemove*/
+/**@name ng_mouseover*/
+/**@name ng_mouseup*/
+/**@name ng_non-bindable*/
+/**@name ng_open*/
+/**@name ng_options*/
+/**@name ng_paste*/
+/**@name ng_pattern*/
+/**@name ng_pluralize*/
+/**@name ng_readonly*/
+/**@name ng_repeat*/
+/**@name ng_required*/
+/**@name ng_selected*/
+/**@name ng_show*/
+/**@name ng_src*/
+/**@name ng_srcset*/
+/**@name ng_style*/
+/**@name ng_submit*/
+/**@name ng_switch*/
+/**@name $ng_transclude*/
+/**@name ng_value*/</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Telemark.html">Telemark</a></li></ul><h3>Global</h3><ul><li><a href="global.html#$cite">$cite</a></li><li><a href="global.html#$class">$class</a></li><li><a href="global.html#$code">$code</a></li><li><a href="global.html#$content">$content</a></li><li><a href="global.html#$data">$data</a></li><li><a href="global.html#$default">$default</a></li><li><a href="global.html#$dir">$dir</a></li><li><a href="global.html#$for">$for</a></li><li><a href="global.html#$form">$form</a></li><li><a href="global.html#$label">$label</a></li><li><a href="global.html#$ng_transclude">$ng_transclude</a></li><li><a href="global.html#$slot">$slot</a></li><li><a href="global.html#$span">$span</a></li><li><a href="global.html#$style">$style</a></li><li><a href="global.html#$summary">$summary</a></li><li><a href="global.html#$title">$title</a></li><li><a href="global.html#a">a</a></li><li><a href="global.html#abbr">abbr</a></li><li><a href="global.html#accept">accept</a></li><li><a href="global.html#accept_charset">accept_charset</a></li><li><a href="global.html#accesskey">accesskey</a></li><li><a href="global.html#acronym">acronym</a></li><li><a href="global.html#action">action</a></li><li><a href="global.html#address">address</a></li><li><a href="global.html#align">align</a></li><li><a href="global.html#alt">alt</a></li><li><a href="global.html#applet">applet</a></li><li><a href="global.html#area">area</a></li><li><a href="global.html#article">article</a></li><li><a href="global.html#aside">aside</a></li><li><a href="global.html#async">async</a></li><li><a href="global.html#attr">attr</a></li><li><a href="global.html#audio">audio</a></li><li><a href="global.html#autocomplete">autocomplete</a></li><li><a href="global.html#autofocus">autofocus</a></li><li><a href="global.html#autoplay">autoplay</a></li><li><a href="global.html#autosave">autosave</a></li><li><a href="global.html#b">b</a></li><li><a href="global.html#base">base</a></li><li><a href="global.html#basefont">basefont</a></li><li><a href="global.html#bdi">bdi</a></li><li><a href="global.html#bdo">bdo</a></li><li><a href="global.html#bgcolor">bgcolor</a></li><li><a href="global.html#bgsound">bgsound</a></li><li><a href="global.html#big">big</a></li><li><a href="global.html#blink">blink</a></li><li><a href="global.html#blockquote">blockquote</a></li><li><a href="global.html#body">body</a></li><li><a href="global.html#border">border</a></li><li><a href="global.html#br">br</a></li><li><a href="global.html#buffered">buffered</a></li><li><a href="global.html#button">button</a></li><li><a href="global.html#canvas">canvas</a></li><li><a href="global.html#caption">caption</a></li><li><a href="global.html#center">center</a></li><li><a href="global.html#challenge">challenge</a></li><li><a href="global.html#charset">charset</a></li><li><a href="global.html#checked">checked</a></li><li><a href="global.html#cite">cite</a></li><li><a href="global.html#code">code</a></li><li><a href="global.html#codebase">codebase</a></li><li><a href="global.html#col">col</a></li><li><a href="global.html#colgroup">colgroup</a></li><li><a href="global.html#color">color</a></li><li><a href="global.html#cols">cols</a></li><li><a href="global.html#colspan">colspan</a></li><li><a href="global.html#command">command</a></li><li><a href="global.html#content">content</a></li><li><a href="global.html#contenteditable">contenteditable</a></li><li><a href="global.html#contextmenu">contextmenu</a></li><li><a href="global.html#controls">controls</a></li><li><a href="global.html#coords">coords</a></li><li><a href="global.html#crossorigin">crossorigin</a></li><li><a href="global.html#data">data</a></li><li><a href="global.html#data_">data_</a></li><li><a href="global.html#datalist">datalist</a></li><li><a href="global.html#datetime">datetime</a></li><li><a href="global.html#dd">dd</a></li><li><a href="global.html#defer">defer</a></li><li><a href="global.html#del">del</a></li><li><a href="global.html#details">details</a></li><li><a href="global.html#dfn">dfn</a></li><li><a href="global.html#dialog">dialog</a></li><li><a href="global.html#dir">dir</a></li><li><a href="global.html#dirname">dirname</a></li><li><a href="global.html#disabled">disabled</a></li><li><a href="global.html#div">div</a></li><li><a href="global.html#dl">dl</a></li><li><a href="global.html#download">download</a></li><li><a href="global.html#draggable">draggable</a></li><li><a href="global.html#dropzone">dropzone</a></li><li><a href="global.html#dt">dt</a></li><li><a href="global.html#el">el</a></li><li><a href="global.html#element">element</a></li><li><a href="global.html#em">em</a></li><li><a href="global.html#embed">embed</a></li><li><a href="global.html#enctype">enctype</a></li><li><a href="global.html#fieldset">fieldset</a></li><li><a href="global.html#figcaption">figcaption</a></li><li><a href="global.html#figure">figure</a></li><li><a href="global.html#font">font</a></li><li><a href="global.html#footer">footer</a></li><li><a href="global.html#form">form</a></li><li><a href="global.html#formaction">formaction</a></li><li><a href="global.html#frame">frame</a></li><li><a href="global.html#frameset">frameset</a></li><li><a href="global.html#h1">h1</a></li><li><a href="global.html#h2">h2</a></li><li><a href="global.html#h3">h3</a></li><li><a href="global.html#h4">h4</a></li><li><a href="global.html#h5">h5</a></li><li><a href="global.html#h6">h6</a></li><li><a href="global.html#head">head</a></li><li><a href="global.html#header">header</a></li><li><a href="global.html#headers">headers</a></li><li><a href="global.html#height">height</a></li><li><a href="global.html#hgroup">hgroup</a></li><li><a href="global.html#hidden">hidden</a></li><li><a href="global.html#high">high</a></li><li><a href="global.html#hr">hr</a></li><li><a href="global.html#href">href</a></li><li><a href="global.html#hreflang">hreflang</a></li><li><a href="global.html#html">html</a></li><li><a href="global.html#http_equiv">http_equiv</a></li><li><a href="global.html#i">i</a></li><li><a href="global.html#icon">icon</a></li><li><a href="global.html#id">id</a></li><li><a href="global.html#iframe">iframe</a></li><li><a href="global.html#image">image</a></li><li><a href="global.html#img">img</a></li><li><a href="global.html#input">input</a></li><li><a href="global.html#ins">ins</a></li><li><a href="global.html#integrity">integrity</a></li><li><a href="global.html#isindex">isindex</a></li><li><a href="global.html#ismap">ismap</a></li><li><a href="global.html#itemprop">itemprop</a></li><li><a href="global.html#iterate">iterate</a></li><li><a href="global.html#kbd">kbd</a></li><li><a href="global.html#keygen">keygen</a></li><li><a href="global.html#keytype">keytype</a></li><li><a href="global.html#kind">kind</a></li><li><a href="global.html#label">label</a></li><li><a href="global.html#lang">lang</a></li><li><a href="global.html#language">language</a></li><li><a href="global.html#legend">legend</a></li><li><a href="global.html#li">li</a></li><li><a href="global.html#link">link</a></li><li><a href="global.html#list">list</a></li><li><a href="global.html#listing">listing</a></li><li><a href="global.html#loop">loop</a></li><li><a href="global.html#low">low</a></li><li><a href="global.html#main">main</a></li><li><a href="global.html#manifest">manifest</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#mark">mark</a></li><li><a href="global.html#marquee">marquee</a></li><li><a href="global.html#max">max</a></li><li><a href="global.html#maxlength">maxlength</a></li><li><a href="global.html#media">media</a></li><li><a href="global.html#menu">menu</a></li><li><a href="global.html#menuitem">menuitem</a></li><li><a href="global.html#meta">meta</a></li><li><a href="global.html#meter">meter</a></li><li><a href="global.html#method">method</a></li><li><a href="global.html#min">min</a></li><li><a href="global.html#minlength">minlength</a></li><li><a href="global.html#multicol">multicol</a></li><li><a href="global.html#multiple">multiple</a></li><li><a href="global.html#muted">muted</a></li><li><a href="global.html#name">name</a></li><li><a href="global.html#nav">nav</a></li><li><a href="global.html#ng_app">ng_app</a></li><li><a href="global.html#ng_bind">ng_bind</a></li><li><a href="global.html#ng_bind-html">ng_bind-html</a></li><li><a href="global.html#ng_bind-template">ng_bind-template</a></li><li><a href="global.html#ng_blur">ng_blur</a></li><li><a href="global.html#ng_change">ng_change</a></li><li><a href="global.html#ng_checked">ng_checked</a></li><li><a href="global.html#ng_class">ng_class</a></li><li><a href="global.html#ng_class-even">ng_class-even</a></li><li><a href="global.html#ng_class-odd">ng_class-odd</a></li><li><a href="global.html#ng_click">ng_click</a></li><li><a href="global.html#ng_cloak">ng_cloak</a></li><li><a href="global.html#ng_controller">ng_controller</a></li><li><a href="global.html#ng_copy">ng_copy</a></li><li><a href="global.html#ng_csp">ng_csp</a></li><li><a href="global.html#ng_cut">ng_cut</a></li><li><a href="global.html#ng_dblclick">ng_dblclick</a></li><li><a href="global.html#ng_disabled">ng_disabled</a></li><li><a href="global.html#ng_focus">ng_focus</a></li><li><a href="global.html#ng_form">ng_form</a></li><li><a href="global.html#ng_hide">ng_hide</a></li><li><a href="global.html#ng_href">ng_href</a></li><li><a href="global.html#ng_if">ng_if</a></li><li><a href="global.html#ng_include">ng_include</a></li><li><a href="global.html#ng_init">ng_init</a></li><li><a href="global.html#ng_jq">ng_jq</a></li><li><a href="global.html#ng_keydown">ng_keydown</a></li><li><a href="global.html#ng_keypress">ng_keypress</a></li><li><a href="global.html#ng_keyup">ng_keyup</a></li><li><a href="global.html#ng_list">ng_list</a></li><li><a href="global.html#ng_maxlength">ng_maxlength</a></li><li><a href="global.html#ng_minlength">ng_minlength</a></li><li><a href="global.html#ng_model">ng_model</a></li><li><a href="global.html#ng_model-options">ng_model-options</a></li><li><a href="global.html#ng_mousedown">ng_mousedown</a></li><li><a href="global.html#ng_mouseenter">ng_mouseenter</a></li><li><a href="global.html#ng_mouseleave">ng_mouseleave</a></li><li><a href="global.html#ng_mousemove">ng_mousemove</a></li><li><a href="global.html#ng_mouseover">ng_mouseover</a></li><li><a href="global.html#ng_mouseup">ng_mouseup</a></li><li><a href="global.html#ng_non-bindable">ng_non-bindable</a></li><li><a href="global.html#ng_open">ng_open</a></li><li><a href="global.html#ng_options">ng_options</a></li><li><a href="global.html#ng_paste">ng_paste</a></li><li><a href="global.html#ng_pattern">ng_pattern</a></li><li><a href="global.html#ng_pluralize">ng_pluralize</a></li><li><a href="global.html#ng_readonly">ng_readonly</a></li><li><a href="global.html#ng_repeat">ng_repeat</a></li><li><a href="global.html#ng_required">ng_required</a></li><li><a href="global.html#ng_selected">ng_selected</a></li><li><a href="global.html#ng_show">ng_show</a></li><li><a href="global.html#ng_src">ng_src</a></li><li><a href="global.html#ng_srcset">ng_srcset</a></li><li><a href="global.html#ng_style">ng_style</a></li><li><a href="global.html#ng_submit">ng_submit</a></li><li><a href="global.html#ng_switch">ng_switch</a></li><li><a href="global.html#ng_transclude">ng_transclude</a></li><li><a href="global.html#ng_value">ng_value</a></li><li><a href="global.html#nobr">nobr</a></li><li><a href="global.html#noembed">noembed</a></li><li><a href="global.html#noframes">noframes</a></li><li><a href="global.html#noscript">noscript</a></li><li><a href="global.html#novalidate">novalidate</a></li><li><a href="global.html#object">object</a></li><li><a href="global.html#ol">ol</a></li><li><a href="global.html#open">open</a></li><li><a href="global.html#optgroup">optgroup</a></li><li><a href="global.html#optimum">optimum</a></li><li><a href="global.html#option">option</a></li><li><a href="global.html#output">output</a></li><li><a href="global.html#p">p</a></li><li><a href="global.html#param">param</a></li><li><a href="global.html#pattern">pattern</a></li><li><a href="global.html#picture">picture</a></li><li><a href="global.html#ping">ping</a></li><li><a href="global.html#placeholder">placeholder</a></li><li><a href="global.html#plaintext">plaintext</a></li><li><a href="global.html#poster">poster</a></li><li><a href="global.html#pre">pre</a></li><li><a href="global.html#preload">preload</a></li><li><a href="global.html#progress">progress</a></li><li><a href="global.html#q">q</a></li><li><a href="global.html#radiogroup">radiogroup</a></li><li><a href="global.html#readonly">readonly</a></li><li><a href="global.html#rel">rel</a></li><li><a href="global.html#required">required</a></li><li><a href="global.html#reversed">reversed</a></li><li><a href="global.html#rows">rows</a></li><li><a href="global.html#rowspan">rowspan</a></li><li><a href="global.html#rp">rp</a></li><li><a href="global.html#rt">rt</a></li><li><a href="global.html#rtc">rtc</a></li><li><a href="global.html#ruby">ruby</a></li><li><a href="global.html#s">s</a></li><li><a href="global.html#samp">samp</a></li><li><a href="global.html#sandbox">sandbox</a></li><li><a href="global.html#scope">scope</a></li><li><a href="global.html#scoped">scoped</a></li><li><a href="global.html#script">script</a></li><li><a href="global.html#seamless">seamless</a></li><li><a href="global.html#section">section</a></li><li><a href="global.html#select">select</a></li><li><a href="global.html#selected">selected</a></li><li><a href="global.html#shadow">shadow</a></li><li><a href="global.html#shape">shape</a></li><li><a href="global.html#size">size</a></li><li><a href="global.html#sizes">sizes</a></li><li><a href="global.html#slot">slot</a></li><li><a href="global.html#small">small</a></li><li><a href="global.html#source">source</a></li><li><a href="global.html#spacer">spacer</a></li><li><a href="global.html#span">span</a></li><li><a href="global.html#spellcheck">spellcheck</a></li><li><a href="global.html#src">src</a></li><li><a href="global.html#srcdoc">srcdoc</a></li><li><a href="global.html#srclang">srclang</a></li><li><a href="global.html#srcset">srcset</a></li><li><a href="global.html#start">start</a></li><li><a href="global.html#step">step</a></li><li><a href="global.html#strike">strike</a></li><li><a href="global.html#strong">strong</a></li><li><a href="global.html#style">style</a></li><li><a href="global.html#sub">sub</a></li><li><a href="global.html#summary">summary</a></li><li><a href="global.html#sup">sup</a></li><li><a href="global.html#tabindex">tabindex</a></li><li><a href="global.html#table">table</a></li><li><a href="global.html#target">target</a></li><li><a href="global.html#tbody">tbody</a></li><li><a href="global.html#td">td</a></li><li><a href="global.html#template">template</a></li><li><a href="global.html#text">text</a></li><li><a href="global.html#textarea">textarea</a></li><li><a href="global.html#tfoot">tfoot</a></li><li><a href="global.html#th">th</a></li><li><a href="global.html#thead">thead</a></li><li><a href="global.html#time">time</a></li><li><a href="global.html#title">title</a></li><li><a href="global.html#tr">tr</a></li><li><a href="global.html#track">track</a></li><li><a href="global.html#tt">tt</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#u">u</a></li><li><a href="global.html#ul">ul</a></li><li><a href="global.html#usemap">usemap</a></li><li><a href="global.html#value">value</a></li><li><a href="global.html#video">video</a></li><li><a href="global.html#wbr">wbr</a></li><li><a href="global.html#when">when</a></li><li><a href="global.html#width">width</a></li><li><a href="global.html#wrap">wrap</a></li><li><a href="global.html#xmp">xmp</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Dec 12 2017 17:30:09 GMT+0000 (GMT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

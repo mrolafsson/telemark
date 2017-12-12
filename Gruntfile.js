@@ -44,11 +44,20 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+        jsdoc : {
+            dist : {
+                src: ['src/telemark.js'],
+                options: {
+                    destination: 'docs'
+                }
+            }
+        }
 	});
 
     grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify')
 	grunt.loadNpmTasks('grunt-contrib-jasmine');
+    grunt.loadNpmTasks('grunt-jsdoc');
 
 	// Default task(s).
 	grunt.registerTask('default', ['jasmine', 'uglify', 'concat']);

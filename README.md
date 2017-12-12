@@ -3,7 +3,7 @@
 
 # Telemark
 
-##### Super-lightweight templating and generation of HTML (and other markup) with plain JavaScript. Works in the browser and Node.js.
+##### Super-lightweight, minimalist templating and generation of HTML (and other markup) with plain JavaScript. Works in the browser and Node.js.
 
 
 ## Getting started
@@ -28,9 +28,9 @@ Getting started is super simple, let's say you want to create HTML you start wit
 ```javascript
 Html.init(window);
 
-ol( $class('beautiful'),
-	li('Foo'),
-	li('Bar')
+ol( $class("beautiful"),
+	li("Foo"),
+	li("Bar")
 ).make();
 ```
 
@@ -51,6 +51,14 @@ markup.html.init(window);
 ```
 
 > Check out this [code example](https://runkit.com/mrolafsson/telemark-with-express-js) generating [HTML](https://telemark-with-express-js-0f6jnafj3umz.runkit.sh) server-side with [Express.js](http://expressjs.com)!
+
+#### `text()`
+
+For strings you're adding to the body of any element you can either refer to it directly (e.g. `li("foo")`) or wrap it in `text()`. You might want to do that when adding multiple text elements or to make use of utility functions like `join(separator)`:
+
+```javascript
+li( text("The", "quick", "brown", "fox").join(" ") );
+```
 
 
 ### Iteration

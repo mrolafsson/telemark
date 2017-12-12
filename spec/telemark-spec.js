@@ -23,6 +23,12 @@ describe("basic functions for constructing markup", function () {
 
     it("should support wrapping text for body of elements with text() to make the code more readable", function () {
         expect(foo( text("bar") ).make()).toBe("<foo>bar</foo>");
+        expect(foo( text("bar", "tar", "car").join(" ") ).make()).toBe("<foo>bar tar car</foo>");
+        expect(foo( text("bi", "ng", "o ").join().trim() ).make()).toBe("<foo>bingo</foo>");
+    });
+
+    it("the text() element should offer utility methods to deal with the arguments it gets", function () {
+        expect(foo( text("bar", "tar", "car").join(" ") ).make()).toBe("<foo>bar tar car</foo>");
     });
 
     it("should deal with special characters in element names and attributes", function () {
@@ -100,7 +106,7 @@ describe("basic functions for constructing markup", function () {
         expect(
             ol(
                 iterate(obj, function (value, key) {
-                    return li(text(key), text(": "), i(value));
+                    return li(text(key, ": ").join(""), i(value));
                 })
             ).make()
         ).toBe("<ol><li>Perch: <i>Embiotocidae</i></li><li>Pike: <i>Ptychocheilus grandis</i></li><li>Yellowtail: <i>Seriola dorsalis</i></li></ol>");
