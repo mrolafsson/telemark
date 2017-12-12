@@ -65,14 +65,14 @@ describe("functions for constructing HTML", function() {
 	});
 
     it("should support defining reusable components", function () {
-        StirUp.specify('telephone', function (name, number) {
+        Telemark.specify('telephone', function (name, number) {
             return a( href('tel:' + number), $class('phone-number'), text(name) );
         });
         expect(span( telephone( 'Ghostbusters', '+1-800-555-2368' ) ).make()).toBe("<span><a href=\"tel:+1-800-555-2368\" class=\"phone-number\">Ghostbusters</a></span>");
     });
 
     it("should be possible to nest reusable components", function () {
-        StirUp.specify('brothers', function (brothers, nested) {
+        Telemark.specify('brothers', function (brothers, nested) {
             return  section(
                         ol( $class('brothers'),
                             iterate(brothers, function (brother) {
@@ -81,7 +81,7 @@ describe("functions for constructing HTML", function() {
                         )
                     );
         });
-        StirUp.specify('brother', function (brother) {
+        Telemark.specify('brother', function (brother) {
             return  li( $class('brother'),
                         text(brother)
                     );

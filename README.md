@@ -1,29 +1,29 @@
-[![Build Status](https://travis-ci.org/mrolafsson/stir-up.svg?branch=master)](https://travis-ci.org/mrolafsson/stir-up)
-[![Try stir-up on RunKit](https://badge.runkitcdn.com/stir-up.svg)](https://npm.runkit.com/stir-up)
+[![Build Status](https://travis-ci.org/mrolafsson/telemark.svg?branch=master)](https://travis-ci.org/mrolafsson/telemark)
+[![Try Telemark on RunKit](https://badge.runkitcdn.com/telemark.svg)](https://npm.runkit.com/telemark)
 
-# Stir-Up
+# Telemark
 
 ##### Super-lightweight templating and generation of HTML (and other markup) with plain JavaScript. Works in the browser and Node.js.
 
 
 ## Getting started
 
-Download or install with: `npm install stir-up`.
+Download or install with: `npm install telemark`.
 
 To keep things as compact as possible you can use the library with or without the built-in support for HTML.
 
 ```html
-<script src="/stir-up.min.js"></script><!-- Wow only 2K -->
-<script src="/stir-up-html-plugin.min.js"></script><!-- Optional -->
+<script src="/telemark.min.js"></script><!-- Wow only 2K -->
+<script src="/telemark-html-plugin.min.js"></script><!-- Optional -->
 ```
 
 or get both in one call:
 
 ```html
-<script src="/stir-up-html.min.js"></script><!-- Gosh only 4K -->
+<script src="/telemark-html.min.js"></script><!-- Gosh only 4K -->
 ```
 
-Getting started is super simple, let's say you want to create HTML you start with the `StirUp.Html()` one:
+Getting started is super simple, let's say you want to create HTML you start with the `Telemark.Html()` one:
 
 ```javascript
 Html.init(window);
@@ -46,11 +46,11 @@ This initialiser will add all the helper methods like `ol()`, and `li()` in this
 Note, you can also use `require()` where the equivalent would be:
 
 ```javascript
-var markup = require("stir-up/dist/stir-up-html.min.js");
+var markup = require("telemark/dist/telemark-html.min.js");
 markup.html.init(window);
 ```
 
-> Check out this [example](https://runkit.com/mrolafsson/stir-up-with-express-js) generating [HTML](https://stir-up-with-express-js-rtaxeaesdwgl.runkit.sh) server-side with [Express.js](http://expressjs.com)!
+> Check out this [example](https://runkit.com/mrolafsson/telemark-with-express-js) generating [HTML](https://telemark-with-express-js-rtaxeaesdwgl.runkit.sh) server-side with [Express.js](http://expressjs.com)!
 
 
 ### Iteration
@@ -134,7 +134,7 @@ In this case, principal Rooney is not added to the list, and only Cameron is dra
 You can specify and register your own components that encapsulate logic and return a particular structure:
 
 ```javascript
-StirUp.specify('telephone', function (name, number) {
+Telemark.specify('telephone', function (name, number) {
     return a( href('tel:' + number), $class('phone-number'), text(name) );
 });
 ```
@@ -165,7 +165,7 @@ This would add your component with the specified properties, resulting in this c
 If you need components to be able to nest other components you can use the following pattern to define them:
 
 ```javascript
-StirUp.specify('brothers', function (brothers, nested) {
+Telemark.specify('brothers', function (brothers, nested) {
     return  section(
                 ol( $class('brothers'),
                     iterate(brothers, function (brother) {
@@ -174,7 +174,7 @@ StirUp.specify('brothers', function (brothers, nested) {
                 )
             );
 });
-StirUp.specify('brother', function (brother) {
+Telemark.specify('brother', function (brother) {
     return  li( $class('brother'),
                 text(brother)
             );
@@ -222,12 +222,12 @@ brothers.make();
  
 ## Generating markup using your own element specification
 
-In this case you don't start with `StirUp.Html()` but the core object `StirUp()`. You can pass in your own array of element names which will be turned into helper methods. You can either have these added to the global namespace like this:
+In this case you don't start with `Telemark.Html()` but the core object `Telemark()`. You can pass in your own array of element names which will be turned into helper methods. You can either have these added to the global namespace like this:
 
 ```javascript
-StirUp.init(['foo', 'bar'], window);
+Telemark.init(['foo', 'bar'], window);
 
-// var markup = require('stir-up);
+// var markup = require('telemark);
 // markup.init(['foo', 'bar'], window);
 
 var my_foo = foo(
@@ -248,7 +248,7 @@ var my_foo = foo(
 Namespace prefixes are supported but the `:` needs to be replaced with an object dot notation to be a valid identifier:
 
 ```javascript
-StirUp.init(['movie:science-fiction'], window);
+Telemark.init(['movie:science-fiction'], window);
 
 movie.science_fiction().make();
 ```
@@ -264,7 +264,7 @@ movie.science_fiction().make();
 You can use your own holder to keep the global namespace nice and tidy:
 
 ```javascript
-var _ = StirUp.init(['foo', 'bar']);
+var _ = Telemark.init(['foo', 'bar']);
 _.foo(
     _.bar('One'),
     _.bar('Two')
@@ -284,7 +284,7 @@ var namespace = {
 	elements: ['animals', 'cat', 'dog'],
 	attributes: ['sound', 'leash']
 };
-StirUp.init(namespace, window);
+Telemark.init(namespace, window);
 
 animals(
 	dog( sound('woof'), 'Benji' ),
@@ -304,7 +304,7 @@ Output:
 You can add any element, regardless of what helper methods you specified using the `el()` function:
 
 ```javascript
-StirUp.init([], window);
+Telemark.init([], window);
 
 el('foo', 
 	el('bar', attr('name', 'thirst'), 
@@ -339,7 +339,7 @@ el('foo',
 
 ## Bonus Points: Generating JsDoc to suppress IDE warnings
 
-You can use `StirUp.JsDoc` plugin to generate JsDoc snippets to suppress any warnings the IDE may give you for the helper methods:
+You can use `Telemark.JsDoc` plugin to generate JsDoc snippets to suppress any warnings the IDE may give you for the helper methods:
 
 ```
 var funcs = new JsDoc();
@@ -348,7 +348,7 @@ var namespace = {
     elements: ['animals:domestic', 'cat', 'dog'],
     attributes: ['sound', 'leash']
 };
-StirUp.init(namespace, funcs);
+Telemark.init(namespace, funcs);
 
 console.log(funcs.create_jsdoc());
 

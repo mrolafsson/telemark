@@ -1,11 +1,11 @@
 {
-	"name": "stir-up",
+	"name": "telemark",
 	"description": "Library for generating HTML (well any sort of markup) with JavaScript",
-	"version": "1.5.1",
-	"main": "src/stir-up.js",
+	"version": "1.9.0",
+	"main": "src/telemark.js",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/mrolafsson/stir-up"
+		"url": "https://github.com/mrolafsson/telemark"
 	},
 	"keywords": [
 		"javascript",
@@ -28,8 +28,8 @@
 	"author": "Hjortur Stefan Olafsson (https://twitter.com/mrolafsson/)",
 	"license": "Apache 2.0",
 	"bugs": {
-		"url": "https://github.com/mrolafsson/stir-up/issues"
+		"url": "https://github.com/mrolafsson/telemark/issues"
 	},
-	"homepage": "https://github.com/mrolafsson/stir-up",
+	"homepage": "https://github.com/mrolafsson/telemark",
 	"runkitExampleFilename": "runkit.js"
 }

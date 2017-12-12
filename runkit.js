@@ -1,4 +1,4 @@
-var markup = require("stir-up/dist/stir-up-html.min.js");
+var markup = require("telemark/dist/telemark-html.min.js");
 markup.html.init(this);
 
 var wikipedia_url = 'https://en.wikipedia.org/wiki/';

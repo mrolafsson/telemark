@@ -30,14 +30,14 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'dist/stir-up-html.min.js': ['dist/stir-up.min.js', 'dist/stir-up-html-plugin.min.js'],
-                    'dist/stir-up-angular.min.js': ['dist/stir-up.min.js', 'dist/stir-up-angular-plugin.min.js'],
+                    'dist/telemark-html.min.js': ['dist/telemark.min.js', 'dist/telemark-html-plugin.min.js'],
+                    'dist/telemark-angular.min.js': ['dist/telemark.min.js', 'dist/telemark-angular-plugin.min.js'],
                 }
             },
         },
 		jasmine: {
 			pivotal: {
-				src: ['src/stir-up.js', 'src/stir-up-html-plugin.js', 'src/stir-up-angular-plugin.js', 'src/stir-up-jsdoc-plugin.js'],
+				src: ['src/telemark.js', 'src/telemark-html-plugin.js', 'src/telemark-angular-plugin.js', 'src/telemark-jsdoc-plugin.js'],
 				options: {
 					specs: 'spec/*-spec.js',
 					helpers: 'spec/*-helper.js'

@@ -7,7 +7,7 @@ describe("functions for constructing JsDoc documentation for suppressing editor 
             elements: ['animals:domestic', 'cat', 'dog'],
             attributes: ['sound', 'leash']
         };
-        StirUp.init(namespace, funcs);
+        Telemark.init(namespace, funcs);
 
         expect(funcs.create_jsdoc().indexOf('/**@namespace animals*/') > 0).toBe(true);
         expect(funcs.create_jsdoc().indexOf('/**@name domestic*/') > 0).toBe(true);

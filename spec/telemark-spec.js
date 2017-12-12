@@ -3,18 +3,18 @@ describe("basic functions for constructing markup", function () {
     var module = {};
 
     it("should work without adding it's methods to the global namespace", function () {
-        var _ = StirUp.init(['foo', 'bar']);
+        var _ = Telemark.init(['foo', 'bar']);
         expect(window.foo).toBeUndefined();
         expect(_.foo).toBeDefined();
     });
 
     it("should be able to add markup functions to window object for a nice, neat syntax", function () {
-        StirUp.init(['foo', 'bar'], window);
+        Telemark.init(['foo', 'bar'], window);
         expect(window.foo).toBeDefined();
     });
 
     it("should try and not step on it's own toes", function () {
-        StirUp.init(['el'], window);
+        Telemark.init(['el'], window);
         expect(el).toBeDefined();
         expect($el).toBeDefined();
 
@@ -26,14 +26,14 @@ describe("basic functions for constructing markup", function () {
     });
 
     it("should deal with special characters in element names and attributes", function () {
-        StirUp.init(['stir-up'], window);
-        expect(stir_up).toBeDefined();
+        Telemark.init(['tele-mark'], window);
+        expect(tele_mark).toBeDefined();
 
-        expect(stir_up().make()).toBe("<stir-up></stir-up>");
+        expect(tele_mark().make()).toBe("<tele-mark></tele-mark>");
     });
 
     it("should support namespace prefixes", function () {
-        StirUp.init(['movie:science-fiction', 'movie:director'], window);
+        Telemark.init(['movie:science-fiction', 'movie:director'], window);
         expect(movie.science_fiction).toBeDefined();
         expect(movie.director).toBeDefined();
 
@@ -41,7 +41,7 @@ describe("basic functions for constructing markup", function () {
     });
 
     it("should work without or without specifying helper methods", function () {
-        StirUp.init(['foo'], window);
+        Telemark.init(['foo'], window);
         expect(
             el('foo',
                 el('bar', attr('name', 'thirst'), 'First'),
@@ -111,7 +111,7 @@ describe("basic functions for constructing markup", function () {
             elements: ['animals', 'cat', 'dog'],
             attributes: ['sound', 'leash']
         };
-        StirUp.init(namespace, window);
+        Telemark.init(namespace, window);
 
         var my_animals = animals();
 

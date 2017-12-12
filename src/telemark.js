@@ -1,5 +1,5 @@
 /**
- * Stir-up
+ * Telemark
  *
  * @author H. Stefan Olafsson <mr.olafsson@gmail.com> (https://twitter.com/mrolafsson/)
  *
@@ -11,14 +11,14 @@
  * @constructor
  *
  */
-var StirUp = (function () {
+var Telemark = (function () {
     "use strict";
 
     var _exports;
     var module = {};
 
     // TODO Temporary solution to ensure we do not add reserved words
-    var reserved = ['break', 'case', 'catch', 'class', 'const', 'continue', 'debugger', 'default', 'delete', 'do', 'else', 'export', 'extends', 'finally', 'for', 'function', 'if', 'import', 'in', 'instanceof', 'new', 'return', 'super', 'switch', 'this', 'throw', 'try', 'typeof', 'var', 'void', 'while', 'with', 'yield'];
+    var reserved = ["break", "case", "catch", "class", "const", "continue", "debugger", "default", "delete", "do", "else", "export", "extends", "finally", "for", "function", "if", "import", "in", "instanceof", "new", "return", "super", "switch", "this", "throw", "try", "typeof", "var", "void", "while", "with", "yield"];
 
     /**
      * @name build
@@ -32,7 +32,7 @@ var StirUp = (function () {
     function _register(name, func) {
         name = _safe_name(name);
         // Supporting namespace prefixes if appropriate
-        var pair = name.split(':');
+        var pair = name.split(":");
         _exports[pair[0]] = _exports[pair[0]] ? _exports[pair[0]] : {};
         if (pair.length == 2) {
             _exports[pair[0]][pair[1]] = func;
@@ -53,8 +53,8 @@ var StirUp = (function () {
     function _safe_name(name) {
         // Try and replace non allowed characters
         // TODO This should probably throw some errors?
-        name = name.replace(/-/, '_');
-        return (((_exports.hasOwnProperty(name) || reserved.indexOf(name) > -1) && !_exports.hasOwnProperty('$' + name)) ? '$' + name : name);
+        name = name.replace(/-/, "_");
+        return (((_exports.hasOwnProperty(name) || reserved.indexOf(name) > -1) && !_exports.hasOwnProperty("$" + name)) ? "$" + name : name);
     }
     
     /**
@@ -75,7 +75,7 @@ var StirUp = (function () {
      */
     module.init = function (namespace, exports) {
         // Determining whether to add the markup methods to an existing object (like window) and/or returned.
-        var exports = (typeof exports === 'undefined') ? {} : exports;
+        var exports = (typeof exports === "undefined") ? {} : exports;
 
         // Setting the exports object as a member on the module
         _exports = exports;
@@ -101,7 +101,7 @@ var StirUp = (function () {
                  */
                 _iterate: callback,
                 make: function () {
-                    if (c != null && typeof c == 'object') {
+                    if (c != null && typeof c == "object") {
                         var markup = [];
 
                         if (Array.isArray(c)) {
@@ -124,9 +124,9 @@ var StirUp = (function () {
                             }
                         }
 
-                        return markup.join('');
+                        return markup.join("");
                     } else {
-                        return '';
+                        return "";
                     }
                 }
             }
@@ -150,9 +150,9 @@ var StirUp = (function () {
                     if (this._show) {
                         var markup = []
                         build([], markup, this.recipe);
-                        return markup.join('');
+                        return markup.join("");
                     } else {
-                        return '';
+                        return "";
                     }
                 }
             }
@@ -179,7 +179,7 @@ var StirUp = (function () {
             return {
                 _make_attribute: function () {
                     if (name && value) {
-                        return name + '="' + value + '"';
+                        return name + "=\"" + value + "\"";
                     } else {
                         return name;
                     }
@@ -199,13 +199,13 @@ var StirUp = (function () {
          */
         function build(attributes, markup, recipe) {
             for (var n = 0; n < recipe.length; n++) {
-                if (recipe[n].hasOwnProperty('_make_attribute')) {
+                if (recipe[n].hasOwnProperty("_make_attribute")) {
                     attributes.push(recipe[n]._make_attribute());
-                } else if (recipe[n].hasOwnProperty('_show') && recipe[n]._show !== false) {
+                } else if (recipe[n].hasOwnProperty("_show") && recipe[n]._show !== false) {
                     build(attributes, markup, recipe[n].recipe);
-                } else if (typeof recipe[n] === 'string') {
+                } else if (typeof recipe[n] === "string") {
                     markup.push(recipe[n]);
-                } else if (recipe[n].hasOwnProperty('make')) {
+                } else if (recipe[n].hasOwnProperty("make")) {
                     markup.push(recipe[n].make());
                 }
             }
@@ -226,7 +226,7 @@ var StirUp = (function () {
             var markup = [];
 
             for (var i = 1; i < arguments.length; i++) {
-                if (Object.prototype.toString.call(arguments[i]) === '[object Arguments]') {
+                if (Object.prototype.toString.call(arguments[i]) === "[object Arguments]") {
                     build(attributes, markup, arguments[i]);
                 } else {
                     build(attributes, markup, Array.prototype.slice.call(arguments, 1));
@@ -245,7 +245,7 @@ var StirUp = (function () {
                     attributes.push(attr._make_attribute());
                 },
                 make: function () {
-                    return '<' + name + (attributes.length > 0 ? ' ' + attributes.join(' ') : '') + '>' + markup.join('') + '</' + name + '>';
+                    return "<" + name + (attributes.length > 0 ? " " + attributes.join(" ") : "") + ">" + markup.join("") + "</" + name + ">";
                 }
             };
         };
@@ -255,12 +255,12 @@ var StirUp = (function () {
 
         // Generating helper methods for all the tag/element names specified by the namespace object.
         for (var e = 0; e < elements.length; e++) {
-            _register(elements[e], new Function('return this.el(\'' + elements[e] + '\', arguments);'));
+            _register(elements[e], new Function("return this.el(\"" + elements[e] + "\", arguments);"));
         }
 
         // Generating helper methods for any attributes if specified.
         for (var a = 0; a < attrs.length; a++) {
-            _register(attrs[a], new Function('value', 'return this.attr(\'' + attrs[a] + '\', value);'));
+            _register(attrs[a], new Function("value", "return this.attr(\"" + attrs[a] + "\", value);"));
         }
 
         return exports;
@@ -270,10 +270,10 @@ var StirUp = (function () {
 
 })();
 
-if (typeof exports !== 'undefined') {
-    if (typeof module !== 'undefined' && module.exports) {
-        exports = module.exports = StirUp;
+if (typeof exports !== "undefined") {
+    if (typeof module !== "undefined" && module.exports) {
+        exports = module.exports = Telemark;
     }
     // But always support CommonJS module 1.1.1 spec (`exports` cannot be a function)
-    exports = StirUp;
+    exports = Telemark;
 }
