@@ -95,4 +95,18 @@ describe("functions for constructing HTML", function() {
             }).make()
         ).toBe("<section><ol class=\"brothers\"><li class=\"brother\">Groucho</li><li class=\"brother\">Harpo</li><li class=\"brother\">Chico</li><li class=\"brother\">Gummo</li><li class=\"brother\">Zeppo</li></ol></section>");
     });
+
+    it("should support rendering output to a dom element", function () {
+        var el = document.createElement("body");
+        el.innerHTML = "<div class=\"target\"></div>";
+
+        span("hello").into(".target", el);
+        expect(el.outerHTML).toBe("<body><div class=\"target\"><span>hello</span></div></body>");
+
+        el.innerHTML = "<div class=\"target\"></div>";
+        document.querySelector = jasmine.createSpy('HTML Element').and.returnValue(el.querySelector(".target"));
+
+        span("bye").into(".target");
+        expect(el.outerHTML).toBe("<body><div class=\"target\"><span>bye</span></div></body>");
+    });
 });

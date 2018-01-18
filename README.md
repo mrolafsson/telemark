@@ -43,6 +43,16 @@ This initialiser will add all the helper methods like `ol()`, and `li()` in this
 </ol>
 ```
 
+If you want to generate and insert the markup into a particular DOM element, use the `into()` method.
+In this case the `ol` and its child elements would be placed in the body of the element with the id: `some_id`.
+
+```
+ol( $class("beautiful"),
+	li("Foo"),
+	li("Bar")
+).into("#some_id");
+```
+
 Note, you can also use `require()` where the equivalent would be:
 
 ```javascript
@@ -217,7 +227,7 @@ brothers.append( li('Chico') );
 brothers.make();
 ```
 		
-...will somewhat predictively generate:
+...will somewhat predictably generate:
 
 ```html
 <ol class="marx">
@@ -227,6 +237,34 @@ brothers.make();
 </ol>
 ```
  
+### Markup methods
+
+#### `make()`
+Generates and returns the markup as a string.
+
+#### `into("query_selector", [element, default: document])`
+Generates and inserts the markup into either the `document` or an element specified for the given [query selector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector).
+The example below would place the `<ol>` and its child elements in the body of the first element with the class `i_have_class`.
+
+```
+ol( $class("beautiful"),
+	li("Foo"),
+	li("Bar")
+).into(".i_have_class");
+```
+
+
+#### Other functions for manipulating markup
+
+##### `append( some_telemark_expression )`
+Append some markup based on a Telemark expression to the element. You do not need to invoke `make()` for the expression you're appending.
+
+##### `prepend( some_telemark_expression )`
+Prepend some markup based on a Telemark expression to the element. You do not need to invoke `make()` for the expression you're prepending.
+
+##### `set( some_telemark_attribute )`
+Set a particular attribute on the element in question. This returns a reference to the element so you can chain this and other expressions.
+
  
 ## Generating markup using your own element specification
 

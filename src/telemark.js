@@ -254,6 +254,13 @@ var Telemark = (function () {
                 },
                 make: function () {
                     return "<" + name + (attributes.length > 0 ? " " + attributes.join(" ") : "") + ">" + markup.join("") + "</" + name + ">";
+                },
+                into: function (selector, el) {
+                    if (typeof el == "undefined") {
+                        el = document;
+                    }
+                    var target = el.querySelector(selector);
+                    target.innerHTML = this.make();
                 }
             };
         };
