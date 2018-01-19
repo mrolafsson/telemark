@@ -183,18 +183,18 @@ This would add your component with the specified properties, resulting in this c
 If you need components to be able to nest other components you can use the following pattern to define them:
 
 ```javascript
-Telemark.specify('brothers', function (brothers, nested) {
+Telemark.specify('brothers', function (collection_of_brothers, nested) {
     return  section(
                 ol( $class('brothers'),
-                    iterate(brothers, function (brother) {
-                        return nested(brother);
+                    iterate(collection_of_brothers, function (a_name) {
+                        return nested(a_name);
                     })
                 )
             );
 });
-Telemark.specify('brother', function (brother) {
+Telemark.specify('brother', function (a_name) {
     return  li( $class('brother'),
-                text(brother)
+                text(a_name)
             );
 });
 ```
