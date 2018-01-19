@@ -72,19 +72,19 @@ describe("functions for constructing HTML", function() {
     });
 
     it("should be possible to nest reusable components", function () {
-        Telemark.specify("brothers", function (brothers, nested) {
+        Telemark.specify('brothers', function (collection_of_brothers, nested) {
             return  section(
-                        ol( $class("brothers"),
-                            iterate(brothers, function (brother) {
-                                return nested(brother);
-                            })
-                        )
-                    );
+                ol( $class('brothers'),
+                    iterate(collection_of_brothers, function (a_name) {
+                        return nested(a_name);
+                    })
+                )
+            );
         });
-        Telemark.specify("brother", function (brother) {
-            return  li( $class("brother"),
-                        text(brother)
-                    );
+        Telemark.specify('brother', function (a_name) {
+            return  li( $class('brother'),
+                text(a_name)
+            );
         });
 
         var marx_brothers = ["Groucho", "Harpo", "Chico", "Gummo", "Zeppo"];
