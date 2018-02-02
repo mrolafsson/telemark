@@ -26,6 +26,11 @@ section(
         ),
         li( $class('other'),
             brother('Zeppo')
+        ),
+        when ( 0 > 1,
+            li(
+                brother('Karl')
+            )
         )
     )
 ).make();
